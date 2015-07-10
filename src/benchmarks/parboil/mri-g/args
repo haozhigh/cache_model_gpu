@@ -1,0 +1,1 @@
+-i ../datasets/parboil/mri-gridding/small/input/small.uks -o ../output/bench_output/parboil/mri-g_small.out -- 32 0

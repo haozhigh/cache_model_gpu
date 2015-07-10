@@ -1,0 +1,1 @@
+-i ../datasets/parboil/sgemm/small/input/matrix1.txt,../datasets/parboil/sgemm/small/input/matrix2.txt,../datasets/parboil/sgemm/small/input/matrix2t.txt -o ../output/bench_output/parboil/sgemm_small.out

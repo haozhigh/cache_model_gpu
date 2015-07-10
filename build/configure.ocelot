@@ -1,0 +1,26 @@
+{
+	ocelot: "ocelot",
+	version: "",
+	trace: {
+		enabled: false,
+		database: "database.trace",
+		memoryChecker: {
+			enabled: false,
+			checkInitialization: false
+		},
+		memory: false,
+		instruction: false
+	},
+	cuda: {
+		implementation: "CudaRuntime",
+		tracePath:      "CudaAPI.trace"
+	},
+	executive: {
+		devices:                  ["emulated"],
+		preferredISA:             "nvidia",
+		optimizationLevel:        "full",
+		reconvergenceMechanism:   "ipdom",
+		workerThreadLimit:        8,
+		warpSize:                 32
+	}
+}

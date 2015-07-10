@@ -1,0 +1,1 @@
+-i ../datasets/parboil/sad/default/input/reference.bin,../datasets/parboil/sad/default/input/frame.bin -o ../output/bench_output/parboil/sad_default.out

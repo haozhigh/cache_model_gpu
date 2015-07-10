@@ -1,0 +1,1 @@
+-i ../datasets/parboil/lbm/short/input/120_120_150_ldc.of -o ../output/bench_output/parboil/lbm_short.out -- 100

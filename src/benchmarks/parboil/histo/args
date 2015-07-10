@@ -1,0 +1,1 @@
+-i ../datasets/parboil/histo/default/input/img.bin -o ../output/bench_output/parboil/histo_default.out -- 20 4

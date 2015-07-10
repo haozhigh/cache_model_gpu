@@ -1,0 +1,1 @@
+-i ../datasets/parboil/cutcp/small/input/watbox.sl40.pqr -o ../output/bench_output/parboil/cutcp_small.out

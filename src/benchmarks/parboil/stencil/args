@@ -1,0 +1,1 @@
+-i ../datasets/parboil/stencil/small/input/128x128x32.bin -o ../output/bench_output/parboil/stencil_small.out -- 128 128 32 100

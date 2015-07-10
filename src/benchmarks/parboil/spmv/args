@@ -1,0 +1,1 @@
+-i ../datasets/parboil/spmv/small/input/1138_bus.mtx,../datasets/parboil/spmv/small/input/vector.bin -o ../output/bench_output/parboil/spmv_small.out

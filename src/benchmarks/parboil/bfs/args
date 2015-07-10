@@ -1,0 +1,1 @@
+-i ../datasets/parboil/bfs/NY/input/graph_input.dat -o ../output/bench_output/parboil/bfs_NY.out
