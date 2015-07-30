@@ -9,7 +9,7 @@
 			checkInitialization: false
 		},
 		memory: false,
-		instruction: false
+		instruction: true
 	},
 	cuda: {
 		implementation: "CudaRuntime",

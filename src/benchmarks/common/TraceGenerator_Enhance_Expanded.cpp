@@ -35,12 +35,39 @@
 #include <fstream>
 #include <map>
 #include <stdio.h>
+#include <vector>
+#include <string>
+#include <string.h>
 
 // Set the maximum amount of threads 
-#define MAX_THREADS (8*1024)
+#define MAX_THREADS (2048*2048)
+
+//  The LoadAccess class
+class LoadAccess {
+    public:
+    unsigned long addresses[MAX_THREADS];
+    unsigned sizes[MAX_THREADS];
+    bool valid[MAX_THREADS];
+    std::string target;
+    unsigned pc;
+    bool empty;
+
+    LoadAccess();
+};
+
+LoadAccess::LoadAccess() {
+    memset(this->addresses, 0, MAX_THREADS * sizeof(unsigned long));
+    memset(this->sizes, 0, MAX_THREADS * sizeof(unsigned));
+    memset(this->valid, 0, MAX_THREADS * sizeof(bool));
+    this->pc = 0;
+    this->empty = true;
+}
 
 // Record executed kernel names(mangled version)
 std::vector<std::string> my_executed_kernels;
+
+// Last load access
+LoadAccess last_load;
 
 //////////////////////////////////
 // The trace generator class
@@ -48,8 +75,6 @@ std::vector<std::string> my_executed_kernels;
 class TraceGenerator : public trace::TraceGenerator {
 	
 	// Counters
-	unsigned long loadCounter;
-	unsigned long storeCounter;
 	unsigned long computeCounter;
 	unsigned long memoryCounter;
 	unsigned kernel_id;
@@ -59,19 +84,13 @@ class TraceGenerator : public trace::TraceGenerator {
 	bool finished;
 	bool initialised;
 	
-	// Base address
-	unsigned long baseAddress;
-	
-	// Mapping of CUDA thread IDs (gid) to trace thread IDs (tid)
-	std::map<unsigned,unsigned> gids;
-	
 	// File streams
 	std::ofstream addrFile;
 	
 	// Name of the program
 	std::string name;
     std::string suite;
-	
+
 	// Public methods
 	public:
 	
@@ -88,7 +107,6 @@ class TraceGenerator : public trace::TraceGenerator {
 			finalise();
 		}
 		float ratio = computeCounter/(float)memoryCounter;
-		std::cout << "[Finished kernel] Loads: " << loadCounter << ", Stores: " << storeCounter << "\n";
 		std::cout << "[Finished kernel] Compute (" << computeCounter << ") memory (" << memoryCounter << ") ratio: " << ratio << "\n";
 		//abort(); // End Ocelot. The exit(1) function does not seem to work.
 	}
@@ -96,11 +114,8 @@ class TraceGenerator : public trace::TraceGenerator {
 	// Open output files
 	void initialize(const executive::ExecutableKernel & kernel) {
 		std::cout << "Starting with " << kernel.name << "" << std::endl;
-		loadCounter = 0;
-		storeCounter = 0;
 		computeCounter = 0;
 		memoryCounter = 0;
-		baseAddress = 0;
 		threads = 0;
 		finished = false;
 		initialised = false;
@@ -113,6 +128,8 @@ class TraceGenerator : public trace::TraceGenerator {
             std::cout << "Exiting program..." << std::endl;
             std::_Exit(-1);
         }
+
+        //  if the same kernel has been executed exit the program
         std::vector<std::string>::iterator iter = my_executed_kernels.begin();
         for (; iter != my_executed_kernels.end(); iter++) {
             if ((*iter) == kernel.name) {
@@ -128,7 +145,7 @@ class TraceGenerator : public trace::TraceGenerator {
         std::string str_kernel_id;
         str_kernel_id = c_str_kernel_id;
 
-        std::string out_dir = "../output/trace_base/" + suite + "/" + name;
+        std::string out_dir = "../output/trace_enhance_expanded/" + suite + "/" + name;
 
 		if (kernel_id < 10) {
 			addrFile.open(out_dir + "/" + name + "_0" + str_kernel_id + ".trc");
@@ -167,54 +184,85 @@ class TraceGenerator : public trace::TraceGenerator {
 		}
 		
 		// Only process the first MAX_THREADS threads
-		if (bid < MAX_THREADS/bdim) {
-		
-			// Found a global load/store
-			if (((event.instruction->addressSpace == ir::PTXInstruction::Global) &&
-			    (event.instruction->opcode == ir::PTXInstruction::Ld || event.instruction->opcode == ir::PTXInstruction::St))
-			   ||
-			   (event.instruction->opcode == ir::PTXInstruction::Tex )) {
+        if (bid < MAX_THREADS/bdim) {
 
-				// Loop over a warp's memory accesses
-				for (unsigned i=0; i<event.memory_addresses.size(); i++) {
-					while (event.active[i] == 0) { i++; }
-					
-					// Compute the address and thread ID
-					unsigned long address = event.memory_addresses[i];
-					unsigned gid = bid*bdim + i;
-					
-					// Compute the data size
-					ir::PTXOperand::DataType datatype = event.instruction->type;
-					unsigned vector = event.instruction->vec;
-					unsigned size = vector * ir::PTXOperand::bytes(datatype);
-					
-					// Found a global load or texture load
-					if (event.instruction->opcode == ir::PTXInstruction::Ld || event.instruction->opcode == ir::PTXInstruction::Tex) {
-						loadCounter++;
-						addrFile << "" << gid << " 0 " << address << " " << size << "\n";
-					}
-					
-					// Found a global store
-					if (event.instruction->opcode == ir::PTXInstruction::St) {
-						storeCounter++;
-						addrFile << "" << gid << " 1 " << address << " " << size << "\n";
-					}
-					
-					// Next thread in the warp
-				}
-			}
-			
-			// Count 'compute' and 'memory' instructions to get the 'computational intensity'
-			if (event.instruction->addressSpace == ir::PTXInstruction::Global) {
-				ir::PTXOperand::DataType datatype = event.instruction->type;
-				unsigned size = ir::PTXOperand::bytes(datatype);
-				memoryCounter += size;
-			}
-			else {
-				computeCounter++;
-			}
-		}
-	}
+            // Found a global load
+            if ((event.instruction->addressSpace == ir::PTXInstruction::Global &&
+                        event.instruction->opcode == ir::PTXInstruction::Ld)
+                    ||
+                    (event.instruction->opcode == ir::PTXInstruction::Tex )) {
+
+                if (! last_load.empty) {
+                    unsigned tid;
+                    for (tid = 0; tid < bdim; tid++) {
+                        unsigned gid = bid * bdim + tid;
+                        if (last_load.valid[gid]) {
+                            addrFile << gid << " " << last_load.addresses[gid] << " " << last_load.sizes[gid] << " " << last_load.pc << " " << 0 <<'\n';
+                            last_load.valid[gid] = false;
+                        }
+                    }
+                    last_load.empty = true;
+                }
+                // Loop over a thread block's threads
+                unsigned memory_address_counter = 0;
+                for (unsigned i = 0; i < bdim; i++) {
+                    unsigned gid = bid * bdim + i;
+
+                    unsigned long address;
+                    unsigned size;
+                    if (event.active[i]) {
+                        address = event.memory_addresses[memory_address_counter++];
+                        ir::PTXOperand::DataType datatype = event.instruction->type;
+                        unsigned vector = event.instruction->vec;
+                        size = vector * ir::PTXOperand::bytes(datatype);
+                    }
+                    else {
+                        address = 0;
+                        size = 0;
+                    }
+                    //modified: add PC value info
+                    unsigned pc_counter = event.instruction->pc;
+
+                    //Store the info in last_load but not output them now
+                    last_load.empty = false;
+                    last_load.valid[gid] = true;
+                    last_load.pc = pc_counter;
+                    last_load.addresses[gid] = address;
+                    last_load.sizes[gid] = size;
+                    last_load.target = event.instruction->d.toString();
+                }
+            }
+            // else if it is not a global load instruction
+            else {
+                if (! last_load.empty) {
+                    if (last_load.target == event.instruction->a.toString() ||
+                            last_load.target == event.instruction->b.toString() ||
+                            last_load.target == event.instruction->c.toString()) {
+                        unsigned tid;
+                        for (tid = 0; tid < bdim; tid++) {
+                            unsigned gid = bid * bdim + tid;
+                            if (last_load.valid[gid]) {
+                                addrFile << gid << " " << last_load.addresses[gid] << " " << last_load.sizes[gid] << " " << last_load.pc << " " << 1 <<'\n';
+                                last_load.valid[gid] = false;
+                            }
+                        }
+                        last_load.empty = true;
+                    }
+
+                }
+            }
+        }
+
+        // Count 'compute' and 'memory' instructions to get the 'computational intensity'
+        if (event.instruction->addressSpace == ir::PTXInstruction::Global) {
+            ir::PTXOperand::DataType datatype = event.instruction->type;
+            unsigned size = ir::PTXOperand::bytes(datatype);
+            memoryCounter += size;
+        }
+        else {
+            computeCounter++;
+        }
+    }
 };
 
 //////////////////////////////////
@@ -226,9 +274,10 @@ extern int original_main(int, char**);
 // The new main function to call the Ocelot tracer and the original main
 //////////////////////////////////
 int main(int argc, char** argv) {
-	TraceGenerator generator(argv[2], argv[1]);
-	ocelot::addTraceGenerator(generator);
-	return original_main(argc - 2,argv + 2);
+    TraceGenerator generator(argv[2], argv[1]);
+    ocelot::addTraceGenerator(generator);
+    original_main(argc - 2,argv + 2);
+    return 0;
 }
 
 //////////////////////////////////

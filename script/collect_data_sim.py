@@ -30,7 +30,7 @@ def main():
                 csv_line = csv_line + str(access) + '\n'
                 csv_lines.append(csv_line)
 
-    f = open(os.path.join(out_dir, '../miss_rate_sim.csv'), 'w')
+    f = open(os.path.join(out_dir, '../missrate_sim.csv'), 'w')
     f.writelines(csv_lines)
     f.close()
 

@@ -68,9 +68,10 @@
 //////////////////////////////////
 // Settings
 //////////////////////////////////
-#define NUM_CORES 1             // Set the amount of cores (SMs) in the GPU
+#define NUM_CORES 15             // Set the amount of cores (SMs) in the GPU
 #define NON_MEM_LATENCY 0       // Set the latency of a cache hit
-#define MAX_THREADS 8*1024     // Set the maximum number of threads supported
+//#define MAX_THREADS 32*1024     // Set the maximum number of threads supported
+#define MAX_THREADS 2048*2048     // Set the maximum number of threads supported
 
 //////////////////////////////////
 // Hardware properties
@@ -92,7 +93,7 @@
 //////////////////////////////////
 #define INF 99999999            // Define infinite as a very large number
 #define STACK_EXTRA_SIZE 256    // Extra size of the reuse distance stack
-#define NUM_CASES 4             // Consider 4 cases: 1) normal, 2) full-associativity, 3) no latency, 4) infinite MSHRs
+#define NUM_CASES 1             // Consider 4 cases: 1) normal, 2) full-associativity, 3) no latency, 4) infinite MSHRs
 
 //////////////////////////////////
 // Data-structure to describe a memory access
@@ -103,6 +104,8 @@ struct Access {
 	unsigned width;               // The SIMD/coalescing width of the access
 	unsigned bytes;               // The number of bytes accessed
 	unsigned long end_address;    // The byte address of the last byte
+    unsigned pc;
+    unsigned block;
 };
 
 //////////////////////////////////

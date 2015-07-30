@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os
+import sys
 import re
 import csv
 import numpy as np
@@ -68,6 +69,8 @@ def parse_ocelot_log(out_file):
         log_dir = dir_name.replace('model_base', 'trace_base')
     elif dir_name.find('model_modify') >= 0:
         log_dir = dir_name.replace('model_modify', 'trace_base')
+    elif dir_name.find('model_enhance') >= 0:
+        log_dir = dir_name.replace('model_enhance', 'trace_enhance')
     run_log = os.path.join(log_dir, 'run.log')
 
     f = open(run_log, 'r')
@@ -393,6 +396,17 @@ def file_newer_than(file1, file2):
     else:
         return False
 
+##  Parse the content of a duration output file
+##  input:
+##      out_file: full path of the output file
+##  output:
+##      duration: duration parsed int value
+def parse_duration_output(out_file):
+    f = open(out_file, 'r')
+    s = f.read()
+    d = int(s)
+    return d
+
 ##  Add two vectors
 ##  intpu:
 ##      x: vector one
@@ -407,7 +421,73 @@ def add_vector(x, y):
         z.append(x[i] + y[i])
     return z
 
-def draw_model_2c_compare(mod_records, mod_fields, prof_reocrds, prof_fields, sim_records, sim_fields, output_file):
+##  Subtract vector by another
+##  input:
+##      x: minuend
+##      y: subtrahend
+##  output:
+##      z: subtract result
+def sub_vector(x, y):
+    if len(x) != len(y):
+        print("sub_vector error: length does not match")
+        return list()
+    z = list()
+    for i in range(0, len(x)):
+        z.append(x[i] - y[i])
+    return z
+
+##  Abs each vector element and return a new vector
+##  input:
+##      x: the input vector
+##  output:
+##      y: the output abs vector
+def abs_vector(x):
+    y = list()
+    for i in range(0, len(x)):
+        y.append(abs(x[i]))
+    return y
+
+def draw_error(kernel_names, err_miss_rate, out_file):
+    index = np.arange(len(kernel_names))
+
+    rect = plt.bar(index + 0.3, err_miss_rate, 0.4, color = 'green', alpha = 0.5)
+    for i in range(0, len(rect)):
+        height = rect[i].get_height()
+        plt.text(rect[i].get_x() + rect[i].get_width() / 2, height * 1.01, '%d'%(int(err_miss_rate[i] * 100)), ha = 'center', va = 'baseline')
+
+    mean_err = sum(err_miss_rate) / len(err_miss_rate)
+    mean_err = int(mean_err * 100)
+
+    bad_error_line = 0.2
+    normal_error_line = 0.1
+    good_case = 0
+    normal_case = 0
+    bad_case = 0
+    for i in range(0, len(err_miss_rate)):
+        if err_miss_rate[i] < normal_error_line:
+            good_case = good_case + 1
+        else:
+            if err_miss_rate[i] > bad_error_line:
+                bad_case = bad_case + 1
+            else:
+                normal_case = normal_case + 1
+
+    plt.xlim(0, len(kernel_names))
+    plt.ylim(0, 1)
+    plt.xticks(index + 0.5, kernel_names, rotation = 'vertical')
+    plt.title('Average Error: %d%%  Good Case: %d  Normal Case: %d  Bad Case: %d'%(mean_err, good_case, normal_case, bad_case))
+    plt.xlabel('Kernel Name')
+    plt.ylabel('Miss Rate Error')
+
+    fig = plt.gcf()
+    fig.set_size_inches(14, 8)
+    fig.set_dpi(72)
+    fig.set_tight_layout(True)
+    fig.savefig(out_file)
+    fig.clf()
+
+
+def draw_compare(mod_records, mod_fields, prof_reocrds, prof_fields, sim_records, sim_fields, output_file):
     kernel_names = mod_fields[2]
     index = np.arange(len(kernel_names))
 
@@ -445,9 +525,28 @@ def draw_model_2c_compare(mod_records, mod_fields, prof_reocrds, prof_fields, si
     fig.set_size_inches(14, 8)
     fig.set_dpi(72)
     fig.set_tight_layout(True)
-    fig.savefig("../output/" + output_file)
+    fig.savefig(output_file)
     fig.clf()
 
+def get_model_version_from_argv():
+    if len(sys.argv) < 2:
+        print("Need argument to specify model version")
+        print("Available versions: base modify modify_expanded",
+                " enhance enhance_expanded", sep = '')
+        return -1
+
+    model_version = sys.argv[1]
+    if (model_version != 'base' and
+        model_version != 'modify' and
+        model_version != 'modify_expanded' and
+        model_version != 'enhance' and
+        model_version != 'enhance_expanded' ):
+        print("Unavailable model version: " + model_version)
+        print("Available versions: base modify modify_expanded",
+                " enhance enhance_expanded", sep = '')
+        return -1
+    print("Selected model version: " + model_version)
+    return model_version
 
 def main():
     print(demangle_cpp_fun_name("_Z17fdtd_step1_kernelPfS_S_S_i"))

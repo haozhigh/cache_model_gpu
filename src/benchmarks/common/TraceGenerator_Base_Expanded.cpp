@@ -37,7 +37,7 @@
 #include <stdio.h>
 
 // Set the maximum amount of threads 
-#define MAX_THREADS (8*1024)
+#define MAX_THREADS (2048*2048)
 
 // Record executed kernel names(mangled version)
 std::vector<std::string> my_executed_kernels;
@@ -128,7 +128,7 @@ class TraceGenerator : public trace::TraceGenerator {
         std::string str_kernel_id;
         str_kernel_id = c_str_kernel_id;
 
-        std::string out_dir = "../output/trace_base/" + suite + "/" + name;
+        std::string out_dir = "../output/trace_base_expanded/" + suite + "/" + name;
 
 		if (kernel_id < 10) {
 			addrFile.open(out_dir + "/" + name + "_0" + str_kernel_id + ".trc");

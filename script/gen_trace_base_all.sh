@@ -5,12 +5,6 @@ source common.sh
 
 build_absolute_dir=`pwd`/../build
 
-bench=$1
-if [ -z $bench ]; then
-    echo "Not enough command-line arguments!"
-    exit -1
-fi
-
 cd ../src/benchmarks
 suites=`ls`
 for suite in $suites; do
@@ -19,7 +13,8 @@ for suite in $suites; do
     fi
 
     cd $suite
-    if [ -d $bench ]; then
+    benches=`ls`
+    for bench in $benches; do
         echo "####Generate base traces for: $suite/$bench"
         cd $bench
 
@@ -52,6 +47,6 @@ for suite in $suites; do
 
         echo
         cd ..
-    fi
+    done
     cd ..
 done

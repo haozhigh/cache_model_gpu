@@ -27,7 +27,7 @@ def main():
                 csv_line = csv_line + str(prof_stat.l2_miss_rate) + '\n'
                 csv_lines.append(csv_line)
 
-    f = open(os.path.join(output_dir, '../miss_rate_profiler.csv'), 'w')
+    f = open(os.path.join(output_dir, '../missrate_profiler.csv'), 'w')
     f.writelines(csv_lines)
     f.close()
 

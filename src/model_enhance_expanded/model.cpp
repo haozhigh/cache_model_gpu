@@ -92,8 +92,6 @@ int main(int argc, char** argv) {
 		schedule_threads(threads, warps, blocks, cores, hardware, blocksize);
 		std::cout << "done" << std::endl;
 		
-		// Model only a single core, modelling multiple cores requires a loop over 'cid'
-		unsigned cid = 0;
 		
 		// Create a Gaussian distribution to model memory latencies
 		std::random_device random;
@@ -129,16 +127,17 @@ int main(int argc, char** argv) {
 			
             std::cout << std::endl;
 			// Calculate the reuse distance profile
-            for (cid = 0; cid < cores.size(); cid++) {
+            for (unsigned cid = 0; cid < cores.size(); cid++) {
                 if (cores[cid].size() <= 0)
                     continue;
                 // Compute the number of active blocks on this core
                 unsigned hardware_max_active_blocks = std::min(hardware.max_active_threads/blocksize, hardware.max_active_blocks);
                 unsigned active_blocks = std::min((unsigned)cores[cid].size(), hardware_max_active_blocks);
-		
+
                 std::cout << "### [core " << cid << "]:" << std::endl;
                 std::cout << "### Running " << active_blocks << " block(s) at a time" << std::endl;
                 std::cout << "### Calculating the reuse distances" << std::endl;
+
                 std::normal_distribution<> distribution(0,ms);
                 reuse_distance(cores[cid], blocks, warps, threads, distances[runs], active_blocks, hardware,
                         sets, ways, ml, nml, mshr, gen, distribution);

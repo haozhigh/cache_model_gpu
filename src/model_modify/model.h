@@ -68,10 +68,10 @@
 //////////////////////////////////
 // Settings
 //////////////////////////////////
-#define NUM_CORES 5             // Set the amount of cores (SMs) in the GPU
+#define NUM_CORES 15             // Set the amount of cores (SMs) in the GPU
 #define NON_MEM_LATENCY 0       // Set the latency of a cache hit
 //#define MAX_THREADS 32*1024     // Set the maximum number of threads supported
-#define MAX_THREADS 2048*2048     // Set the maximum number of threads supported
+#define MAX_THREADS 1024*8     // Set the maximum number of threads supported
 
 //////////////////////////////////
 // Hardware properties
