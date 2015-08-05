@@ -1,0 +1,17 @@
+==24940== NVPROF is profiling process 24940, command: ./gemm_profiler
+==24940== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24940== Profiling application: ./gemm_profiler
+==24940== Profiling result:
+==24940== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: gemm_kernel(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      87.44%      87.44%      87.44%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)     100.00%     100.00%     100.00%
+==24949== NVPROF is profiling process 24949, command: ./gemm_profiler
+==24949== Profiling application: ./gemm_profiler
+==24949== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 70.13%  388.52us         1  388.52us  388.52us  388.52us  gemm_kernel(float*, float*, float*)
+ 22.41%  124.13us         3  41.376us  41.088us  41.536us  [CUDA memcpy HtoD]
+  7.46%  41.344us         1  41.344us  41.344us  41.344us  [CUDA memcpy DtoH]

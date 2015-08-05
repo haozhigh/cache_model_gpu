@@ -1,0 +1,18 @@
+==24753== NVPROF is profiling process 24753, command: ./spmv_profiler -i ../datasets/parboil/spmv/small/input/1138_bus.mtx,../datasets/parboil/spmv/small/input/vector.bin -o ../output/bench_output/parboil/spmv_small.out
+==24753== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24753== Profiling application: ./spmv_profiler -i ../datasets/parboil/spmv/small/input/1138_bus.mtx,../datasets/parboil/spmv/small/input/vector.bin -o ../output/bench_output/parboil/spmv_small.out
+==24753== Profiling result:
+==24753== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: spmv_jds(float*, float const *, int const *, int const *, float const *, int const *, int)
+         50        l1_cache_global_hit_rate              L1 Global Hit Rate      61.72%      61.72%      61.72%
+         50             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      84.23%     100.00%      99.68%
+==24762== NVPROF is profiling process 24762, command: ./spmv_profiler -i ../datasets/parboil/spmv/small/input/1138_bus.mtx,../datasets/parboil/spmv/small/input/vector.bin -o ../output/bench_output/parboil/spmv_small.out
+==24762== Profiling application: ./spmv_profiler -i ../datasets/parboil/spmv/small/input/1138_bus.mtx,../datasets/parboil/spmv/small/input/vector.bin -o ../output/bench_output/parboil/spmv_small.out
+==24762== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 97.46%  464.47us        50  9.2890us  9.2670us  9.5620us  spmv_jds(float*, float const *, int const *, int const *, float const *, int const *, int)
+  1.50%  7.1360us         6  1.1890us     640ns  2.1120us  [CUDA memcpy HtoD]
+  0.62%  2.9440us         1  2.9440us  2.9440us  2.9440us  [CUDA memset]
+  0.42%  2.0160us         1  2.0160us  2.0160us  2.0160us  [CUDA memcpy DtoH]

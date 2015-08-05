@@ -1,0 +1,21 @@
+==24841== NVPROF is profiling process 24841, command: ./atax_profiler
+==24841== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24841== Profiling application: ./atax_profiler
+==24841== Profiling result:
+==24841== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: atax_kernel1(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate       5.17%       5.17%       5.17%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      97.24%      97.24%      97.24%
+	Kernel: atax_kernel2(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      49.76%      49.76%      49.76%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.21%       0.21%       0.21%
+==24850== NVPROF is profiling process 24850, command: ./atax_profiler
+==24850== Profiling application: ./atax_profiler
+==24850== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 66.21%  715.99us         1  715.99us  715.99us  715.99us  atax_kernel1(float*, float*, float*)
+ 18.64%  201.55us         1  201.55us  201.55us  201.55us  atax_kernel2(float*, float*, float*)
+ 15.00%  162.24us         4  40.559us     640ns  160.32us  [CUDA memcpy HtoD]
+  0.15%  1.6320us         1  1.6320us  1.6320us  1.6320us  [CUDA memcpy DtoH]

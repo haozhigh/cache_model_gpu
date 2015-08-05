@@ -1,0 +1,17 @@
+==24957== NVPROF is profiling process 24957, command: ./gesummv_profiler
+==24957== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24957== Profiling application: ./gesummv_profiler
+==24957== Profiling result:
+==24957== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: gesummv_kernel(float*, float*, float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate       2.69%       2.69%       2.69%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      98.21%      98.21%      98.21%
+==24966== NVPROF is profiling process 24966, command: ./gesummv_profiler
+==24966== Profiling application: ./gesummv_profiler
+==24966== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 88.83%  750.16us         1  750.16us  750.16us  750.16us  gesummv_kernel(float*, float*, float*, float*, float*)
+ 11.01%  93.024us         5  18.604us     640ns  49.600us  [CUDA memcpy HtoD]
+  0.16%  1.3440us         1  1.3440us  1.3440us  1.3440us  [CUDA memcpy DtoH]

@@ -1,0 +1,29 @@
+Opening file:../datasets/parboil/sgemm/small/input/matrix1.txt
+Matrix dimension: 128x96
+Opening file:../datasets/parboil/sgemm/small/input/matrix2t.txt
+Matrix dimension: 160x96
+==24735== NVPROF is profiling process 24735, command: ./sgemm_profiler -i ../datasets/parboil/sgemm/small/input/matrix1.txt,../datasets/parboil/sgemm/small/input/matrix2.txt,../datasets/parboil/sgemm/small/input/matrix2t.txt -o ../output/bench_output/parboil/sgemm_small.out
+==24735== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+Opening file:../output/bench_output/parboil/sgemm_small.out for write.
+Matrix dimension: 128x160
+==24735== Profiling application: ./sgemm_profiler -i ../datasets/parboil/sgemm/small/input/matrix1.txt,../datasets/parboil/sgemm/small/input/matrix2.txt,../datasets/parboil/sgemm/small/input/matrix2t.txt -o ../output/bench_output/parboil/sgemm_small.out
+==24735== Profiling result:
+==24735== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: mysgemmNT(float const *, int, float const *, int, float*, int, int, float, float)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)     100.00%     100.00%     100.00%
+Opening file:../datasets/parboil/sgemm/small/input/matrix1.txt
+Matrix dimension: 128x96
+Opening file:../datasets/parboil/sgemm/small/input/matrix2t.txt
+Matrix dimension: 160x96
+==24744== NVPROF is profiling process 24744, command: ./sgemm_profiler -i ../datasets/parboil/sgemm/small/input/matrix1.txt,../datasets/parboil/sgemm/small/input/matrix2.txt,../datasets/parboil/sgemm/small/input/matrix2t.txt -o ../output/bench_output/parboil/sgemm_small.out
+Opening file:../output/bench_output/parboil/sgemm_small.out for write.
+Matrix dimension: 128x160
+==24744== Profiling application: ./sgemm_profiler -i ../datasets/parboil/sgemm/small/input/matrix1.txt,../datasets/parboil/sgemm/small/input/matrix2.txt,../datasets/parboil/sgemm/small/input/matrix2t.txt -o ../output/bench_output/parboil/sgemm_small.out
+==24744== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 50.61%  32.988us         1  32.988us  32.988us  32.988us  mysgemmNT(float const *, int, float const *, int, float*, int, int, float, float)
+ 28.28%  18.432us         2  9.2160us  8.8320us  9.6000us  [CUDA memcpy HtoD]
+ 21.11%  13.759us         1  13.759us  13.759us  13.759us  [CUDA memcpy DtoH]

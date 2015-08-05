@@ -1,0 +1,21 @@
+==24974== NVPROF is profiling process 24974, command: ./mvt_profiler
+==24974== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24974== Profiling application: ./mvt_profiler
+==24974== Profiling result:
+==24974== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: mvt_kernel1(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate       5.32%       5.32%       5.32%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      97.19%      97.19%      97.19%
+	Kernel: mvt_kernel2(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      49.76%      49.76%      49.76%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.19%       0.19%       0.19%
+==24983== NVPROF is profiling process 24983, command: ./mvt_profiler
+==24983== Profiling application: ./mvt_profiler
+==24983== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 65.93%  712.29us         1  712.29us  712.29us  712.29us  mvt_kernel1(float*, float*, float*)
+ 18.62%  201.21us         1  201.21us  201.21us  201.21us  mvt_kernel2(float*, float*, float*)
+ 15.14%  163.55us         5  32.710us     640ns  160.96us  [CUDA memcpy HtoD]
+  0.31%  3.3920us         2  1.6960us  1.6320us  1.7600us  [CUDA memcpy DtoH]

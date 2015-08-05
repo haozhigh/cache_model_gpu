@@ -1,0 +1,25 @@
+==24896== NVPROF is profiling process 24896, command: ./covar_profiler
+==24896== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24896== Profiling application: ./covar_profiler
+==24896== Profiling result:
+==24896== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: reduce_kernel(float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      48.12%      48.12%      48.12%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      50.92%      50.92%      50.92%
+	Kernel: mean_kernel(float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      43.06%      43.06%      43.06%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      10.77%      10.77%      10.77%
+	Kernel: covar_kernel(float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      44.06%      44.06%      44.06%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      27.54%      27.54%      27.54%
+==24906== NVPROF is profiling process 24906, command: ./covar_profiler
+==24906== Profiling application: ./covar_profiler
+==24906== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 99.65%  5.18814s         1  5.18814s  5.18814s  5.18814s  covar_kernel(float*, float*)
+  0.17%  8.6437ms         3  2.8813ms     896ns  5.1670ms  [CUDA memcpy HtoD]
+  0.16%  8.3371ms         1  8.3371ms  8.3371ms  8.3371ms  [CUDA memcpy DtoH]
+  0.02%  893.64us         1  893.64us  893.64us  893.64us  mean_kernel(float*, float*)
+  0.00%  94.878us         1  94.878us  94.878us  94.878us  reduce_kernel(float*, float*)

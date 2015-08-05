@@ -1,0 +1,22 @@
+==24699== NVPROF is profiling process 24699, command: ./mri-q_profiler -i ../datasets/parboil/mri-q/small/input/32_32_32_dataset.bin -o ../output/bench_output/parboil/mri-q_small.out
+==24699== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24699== Profiling application: ./mri-q_profiler -i ../datasets/parboil/mri-q/small/input/32_32_32_dataset.bin -o ../output/bench_output/parboil/mri-q_small.out
+==24699== Profiling result:
+==24699== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: ComputeQ_GPU(int, int, float*, float*, float*, float*, float*)
+          3        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          3             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      26.07%      30.61%      28.97%
+	Kernel: ComputePhiMag_GPU(float*, float*, float*, int)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)     100.00%     100.00%     100.00%
+==24708== NVPROF is profiling process 24708, command: ./mri-q_profiler -i ../datasets/parboil/mri-q/small/input/32_32_32_dataset.bin -o ../output/bench_output/parboil/mri-q_small.out
+==24708== Profiling application: ./mri-q_profiler -i ../datasets/parboil/mri-q/small/input/32_32_32_dataset.bin -o ../output/bench_output/parboil/mri-q_small.out
+==24708== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 99.26%  18.006ms         3  6.0021ms  5.3418ms  6.3438ms  ComputeQ_GPU(int, int, float*, float*, float*, float*, float*)
+  0.41%  74.015us         8  9.2510us  1.1520us  21.888us  [CUDA memcpy HtoD]
+  0.29%  53.279us         3  17.759us  3.1680us  28.799us  [CUDA memcpy DtoH]
+  0.03%  6.3360us         2  3.1680us  2.7840us  3.5520us  [CUDA memset]
+  0.01%  1.5100us         1  1.5100us  1.5100us  1.5100us  ComputePhiMag_GPU(float*, float*, float*, int)

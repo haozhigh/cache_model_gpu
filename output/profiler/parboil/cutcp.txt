@@ -1,0 +1,18 @@
+==24605== NVPROF is profiling process 24605, command: ./cutcp_profiler -i ../datasets/parboil/cutcp/small/input/watbox.sl40.pqr -o ../output/bench_output/parboil/cutcp_small.out
+==24605== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24605== Profiling application: ./cutcp_profiler -i ../datasets/parboil/cutcp/small/input/watbox.sl40.pqr -o ../output/bench_output/parboil/cutcp_small.out
+==24605== Profiling result:
+==24605== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: cuda_cutoff_potential_lattice6overlap(int, int, float4*, float, float, float, float*, int)
+         11        l1_cache_global_hit_rate              L1 Global Hit Rate      54.97%      63.74%      57.76%
+         11             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      92.74%      94.61%      93.86%
+==24614== NVPROF is profiling process 24614, command: ./cutcp_profiler -i ../datasets/parboil/cutcp/small/input/watbox.sl40.pqr -o ../output/bench_output/parboil/cutcp_small.out
+==24614== Profiling application: ./cutcp_profiler -i ../datasets/parboil/cutcp/small/input/watbox.sl40.pqr -o ../output/bench_output/parboil/cutcp_small.out
+==24614== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 95.58%  23.778ms        11  2.1616ms  1.2062ms  2.6833ms  cuda_cutoff_potential_lattice6overlap(int, int, float4*, float, float, float, float*, int)
+  3.94%  981.21us         1  981.21us  981.21us  981.21us  [CUDA memcpy DtoH]
+  0.39%  98.175us         3  32.725us     640ns  96.895us  [CUDA memcpy HtoD]
+  0.08%  20.288us         1  20.288us  20.288us  20.288us  [CUDA memset]

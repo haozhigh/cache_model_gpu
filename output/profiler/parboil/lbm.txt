@@ -1,0 +1,17 @@
+==24642== NVPROF is profiling process 24642, command: ./lbm_profiler -i ../datasets/parboil/lbm/short/input/120_120_150_ldc.of -o ../output/bench_output/parboil/lbm_short.out -- 100
+==24642== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24642== Profiling application: ./lbm_profiler -i ../datasets/parboil/lbm/short/input/120_120_150_ldc.of -o ../output/bench_output/parboil/lbm_short.out -- 100
+==24642== Profiling result:
+==24642== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: performStreamCollide_kernel(float*, float*)
+        100        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+        100             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.00%       0.00%       0.00%
+==24652== NVPROF is profiling process 24652, command: ./lbm_profiler -i ../datasets/parboil/lbm/short/input/120_120_150_ldc.of -o ../output/bench_output/parboil/lbm_short.out -- 100
+==24652== Profiling application: ./lbm_profiler -i ../datasets/parboil/lbm/short/input/120_120_150_ldc.of -o ../output/bench_output/parboil/lbm_short.out -- 100
+==24652== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 61.46%  307.57ms       100  3.0757ms  3.0406ms  3.0951ms  performStreamCollide_kernel(float*, float*)
+ 23.48%  117.48ms         2  58.742ms  58.535ms  58.948ms  [CUDA memcpy HtoD]
+ 15.06%  75.350ms         1  75.350ms  75.350ms  75.350ms  [CUDA memcpy DtoH]

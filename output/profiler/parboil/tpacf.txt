@@ -1,0 +1,17 @@
+==8418== NVPROF is profiling process 8418, command: ./tpacf_profiler -i ../datasets/parboil/tpacf/small/input/Datapnts.1,../datasets/parboil/tpacf/small/input/Randompnts.1,../datasets/parboil/tpacf/small/input/Randompnts.2,../datasets/parboil/tpacf/small/input/Randompnts.3,../datasets/parboil/tpacf/small/i
+==8418== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==8418== Profiling application: ./tpacf_profiler -i ../datasets/parboil/tpacf/small/input/Datapnts.1,../datasets/parboil/tpacf/small/input/Randompnts.1,../datasets/parboil/tpacf/small/input/Randompnts.2,../datasets/parboil/tpacf/small/input/Randompnts.3,../datasets/parboil/tpacf/small/i
+==8418== Profiling result:
+==8418== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: gen_hists(unsigned long*, float*, float*, float*, int, int)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      65.45%      65.45%      65.45%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      83.64%      83.64%      83.64%
+==8427== NVPROF is profiling process 8427, command: ./tpacf_profiler -i ../datasets/parboil/tpacf/small/input/Datapnts.1,../datasets/parboil/tpacf/small/input/Randompnts.1,../datasets/parboil/tpacf/small/input/Randompnts.2,../datasets/parboil/tpacf/small/input/Randompnts.3,../datasets/parboil/tpacf/small/i
+==8427== Profiling application: ./tpacf_profiler -i ../datasets/parboil/tpacf/small/input/Datapnts.1,../datasets/parboil/tpacf/small/input/Randompnts.1,../datasets/parboil/tpacf/small/input/Randompnts.2,../datasets/parboil/tpacf/small/input/Randompnts.3,../datasets/parboil/tpacf/small/i
+==8427== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 98.92%  9.0251ms         1  9.0251ms  9.0251ms  9.0251ms  gen_hists(unsigned long*, float*, float*, float*, int, int)
+  1.01%  91.935us         2  45.967us     800ns  91.135us  [CUDA memcpy HtoD]
+  0.07%  6.3360us         1  6.3360us  6.3360us  6.3360us  [CUDA memcpy DtoH]

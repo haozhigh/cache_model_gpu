@@ -1,0 +1,50 @@
+==28727== NVPROF is profiling process 28727, command: ./mri-g_profiler -i ../datasets/parboil/mri-gridding/small/input/small.uks -o ../output/bench_output/parboil/mri-g_small.out -- 32 0
+==28727== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==28727== Profiling application: ./mri-g_profiler -i ../datasets/parboil/mri-gridding/small/input/small.uks -o ../output/bench_output/parboil/mri-g_small.out -- 32 0
+==28727== Profiling result:
+==28727== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: reorder_kernel(int, unsigned int*, ReconstructionSample*, sampleArrayStruct)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      48.78%      48.78%      48.78%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      74.43%      74.43%      74.43%
+	Kernel: splitRearrange(int, int, unsigned int*, unsigned int*, unsigned int*, unsigned int*, unsigned int*)
+          7        l1_cache_global_hit_rate              L1 Global Hit Rate       9.41%      11.74%      10.51%
+          7             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       8.68%      10.95%      10.16%
+	Kernel: scan_inter1_kernel(unsigned int*, unsigned int)
+          9        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%      50.00%      44.44%
+          9             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.00%       0.00%       0.00%
+	Kernel: uniformAdd(unsigned int, unsigned int*, unsigned int*)
+          8        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          8             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.00%       0.00%       0.00%
+	Kernel: scan_inter2_kernel(unsigned int*, unsigned int)
+          9        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%      50.00%      44.44%
+          9             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.00%       0.00%       0.00%
+	Kernel: binning_kernel(unsigned int, ReconstructionSample*, unsigned int*, unsigned int*, unsigned int*, unsigned int, unsigned int)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      29.53%      29.53%      29.53%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      28.93%      28.93%      28.93%
+	Kernel: gridding_GPU(sampleArrayStruct, unsigned int*, float2*, float*, float)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      53.91%      53.91%      53.91%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      87.58%      87.58%      87.58%
+	Kernel: splitSort(int, int, unsigned int*, unsigned int*, unsigned int*)
+          7        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          7             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       2.10%       3.37%       2.75%
+	Kernel: scan_L1_kernel(unsigned int, unsigned int*, unsigned int*)
+          8        l1_cache_global_hit_rate              L1 Global Hit Rate       0.00%       0.00%       0.00%
+          8             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       0.00%       0.00%       0.00%
+==28737== NVPROF is profiling process 28737, command: ./mri-g_profiler -i ../datasets/parboil/mri-gridding/small/input/small.uks -o ../output/bench_output/parboil/mri-g_small.out -- 32 0
+==28737== Profiling application: ./mri-g_profiler -i ../datasets/parboil/mri-gridding/small/input/small.uks -o ../output/bench_output/parboil/mri-g_small.out -- 32 0
+==28737== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 69.76%  276.11ms         1  276.11ms  276.11ms  276.11ms  gridding_GPU(sampleArrayStruct, unsigned int*, float2*, float*, float)
+ 11.26%  44.564ms         7  6.3663ms  5.8052ms  9.1832ms  splitSort(int, int, unsigned int*, unsigned int*, unsigned int*)
+  7.81%  30.902ms         4  7.7256ms  2.0480us  20.523ms  [CUDA memcpy DtoH]
+  4.04%  16.001ms         7  2.2859ms  1.1240ms  8.1623ms  splitRearrange(int, int, unsigned int*, unsigned int*, unsigned int*, unsigned int*, unsigned int*)
+  2.50%  9.8994ms         6  1.6499ms     608ns  9.8959ms  [CUDA memcpy HtoD]
+  2.32%  9.1923ms         8  1.1490ms  26.481us  9.0017ms  scan_L1_kernel(unsigned int, unsigned int*, unsigned int*)
+  1.02%  4.0268ms         1  4.0268ms  4.0268ms  4.0268ms  binning_kernel(unsigned int, ReconstructionSample*, unsigned int*, unsigned int*, unsigned int*, unsigned int, unsigned int)
+  0.52%  2.0544ms         1  2.0544ms  2.0544ms  2.0544ms  reorder_kernel(int, unsigned int*, ReconstructionSample*, sampleArrayStruct)
+  0.47%  1.8693ms        20  93.463us  1.0560us  920.06us  [CUDA memset]
+  0.28%  1.0896ms         8  136.20us  2.4420us  1.0707ms  uniformAdd(unsigned int, unsigned int*, unsigned int*)
+  0.02%  66.211us         9  7.3560us  4.8070us  23.394us  scan_inter2_kernel(unsigned int*, unsigned int)
+  0.01%  51.217us         9  5.6900us  3.7120us  18.003us  scan_inter1_kernel(unsigned int*, unsigned int)

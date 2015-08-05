@@ -1,0 +1,21 @@
+==9040== NVPROF is profiling process 9040, command: ./bfs_profiler -i ../datasets/parboil/bfs/NY/input/graph_input.dat -o ../output/bench_output/parboil/bfs_NY.out
+==9040== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==9040== Profiling application: ./bfs_profiler -i ../datasets/parboil/bfs/NY/input/graph_input.dat -o ../output/bench_output/parboil/bfs_NY.out
+==9040== Profiling result:
+==9040== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: BFS_kernel_multi_blk_inGPU(int*, int*, int2*, int2*, int*, int*, int*, int*, int, int, int*, int*, int*, int*)
+          2        l1_cache_global_hit_rate              L1 Global Hit Rate      23.43%      40.71%      32.07%
+          2             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      72.10%      89.49%      80.80%
+	Kernel: BFS_in_GPU_kernel(int*, int*, int2*, int2*, int*, int*, int, int*, int, int, int*)
+          3        l1_cache_global_hit_rate              L1 Global Hit Rate      40.81%      48.00%      43.81%
+          3             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      50.74%      93.64%      79.17%
+==9049== NVPROF is profiling process 9049, command: ./bfs_profiler -i ../datasets/parboil/bfs/NY/input/graph_input.dat -o ../output/bench_output/parboil/bfs_NY.out
+==9049== Profiling application: ./bfs_profiler -i ../datasets/parboil/bfs/NY/input/graph_input.dat -o ../output/bench_output/parboil/bfs_NY.out
+==9049== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 60.24%  10.955ms         2  5.4775ms  133.55us  10.821ms  BFS_kernel_multi_blk_inGPU(int*, int*, int2*, int2*, int*, int*, int*, int*, int, int, int*, int*, int*, int*)
+ 23.20%  4.2196ms         3  1.4065ms  44.256us  3.4060ms  BFS_in_GPU_kernel(int*, int*, int2*, int2*, int*, int*, int, int*, int, int, int*)
+ 14.46%  2.6288ms        17  154.64us     608ns  1.7583ms  [CUDA memcpy HtoD]
+  2.09%  380.96us        15  25.397us  1.0880us  184.80us  [CUDA memcpy DtoH]

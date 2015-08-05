@@ -1,0 +1,12 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+99999999 1297
+
+CASE: 0 miss_compulsory: 1297
+CASE: 0 miss_capacity: 0
+modelled_hits: 0

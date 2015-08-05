@@ -1,0 +1,17 @@
+==24824== NVPROF is profiling process 24824, command: ./3dconv_profiler
+==24824== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24824== Profiling application: ./3dconv_profiler
+==24824== Profiling result:
+==24824== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: convolution3D_kernel(float*, float*, int)
+        254        l1_cache_global_hit_rate              L1 Global Hit Rate      32.52%      39.95%      35.98%
+        254             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      70.66%      78.66%      73.84%
+==24833== NVPROF is profiling process 24833, command: ./3dconv_profiler
+==24833== Profiling application: ./3dconv_profiler
+==24833== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 47.11%  33.553ms         2  16.777ms  13.167ms  20.386ms  [CUDA memcpy HtoD]
+ 46.62%  33.203ms         1  33.203ms  33.203ms  33.203ms  [CUDA memcpy DtoH]
+  6.26%  4.4590ms       254  17.555us  16.873us  18.494us  convolution3D_kernel(float*, float*, int)

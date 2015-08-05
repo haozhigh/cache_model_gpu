@@ -1,0 +1,36 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+374 1
+373 1
+9 484
+384 1
+8 1489
+375 8
+377 12
+1 10072
+99999999 185451
+376 10
+0 672
+10 212
+2 6782
+378 21
+11 45
+3 337
+379 17
+6 115
+382 17
+7 1201
+383 6
+381 17
+5 21
+4 492
+380 16
+
+CASE: 0 miss_compulsory: 185451
+CASE: 0 miss_capacity: 3694
+modelled_hits: 18355

@@ -1,0 +1,24 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+11 3016
+10 1301
+9 15361
+0 207143
+99999999 8192
+1 959333
+2 156691
+3 538091
+4 59296
+5 110421
+7 69537
+6 28385
+8 6433
+
+CASE: 0 miss_compulsory: 8192
+CASE: 0 miss_capacity: 234454
+modelled_hits: 1920554

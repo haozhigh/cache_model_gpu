@@ -1,0 +1,29 @@
+==24875== NVPROF is profiling process 24875, command: ./corr_profiler
+==24875== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24875== Profiling application: ./corr_profiler
+==24875== Profiling result:
+==24875== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: std_kernel(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      71.69%      71.69%      71.69%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      10.79%      10.79%      10.79%
+	Kernel: reduce_kernel(float*, float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      63.72%      63.72%      63.72%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      53.72%      53.72%      53.72%
+	Kernel: corr_kernel(float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      42.32%      42.32%      42.32%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      27.60%      27.60%      27.60%
+	Kernel: mean_kernel(float*, float*)
+          1        l1_cache_global_hit_rate              L1 Global Hit Rate      43.06%      43.06%      43.06%
+          1             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      10.76%      10.76%      10.76%
+==24888== NVPROF is profiling process 24888, command: ./corr_profiler
+==24888== Profiling application: ./corr_profiler
+==24888== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 99.62%  5.18144s         1  5.18144s  5.18144s  5.18144s  corr_kernel(float*, float*)
+  0.17%  8.8472ms         1  8.8472ms  8.8472ms  8.8472ms  [CUDA memcpy DtoH]
+  0.17%  8.6770ms         5  1.7354ms     608ns  5.1187ms  [CUDA memcpy HtoD]
+  0.02%  929.57us         1  929.57us  929.57us  929.57us  std_kernel(float*, float*, float*)
+  0.02%  893.66us         1  893.66us  893.66us  893.66us  mean_kernel(float*, float*)
+  0.01%  583.70us         1  583.70us  583.70us  583.70us  reduce_kernel(float*, float*, float*)

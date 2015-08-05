@@ -1,0 +1,27 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+14 2
+13 12
+8 339
+9 115
+7 353
+3 1134
+0 514342
+11 79
+4 1759
+2 1698
+99999999 259998
+1 736
+12 90
+10 108
+5 832
+6 739
+
+CASE: 0 miss_compulsory: 259998
+CASE: 0 miss_capacity: 2669
+modelled_hits: 519669

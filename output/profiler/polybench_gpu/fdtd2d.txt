@@ -1,0 +1,25 @@
+==24915== NVPROF is profiling process 24915, command: ./fdtd2d_profiler
+==24915== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==24915== Profiling application: ./fdtd2d_profiler
+==24915== Profiling result:
+==24915== Metric result:
+Invocations                     Metric Name              Metric Description         Min         Max         Avg
+Device "GeForce GTX 570 (0)"
+	Kernel: fdtd_step1_kernel(float*, float*, float*, float*, int)
+        500        l1_cache_global_hit_rate              L1 Global Hit Rate      29.49%      29.61%      29.56%
+        500             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)       5.27%       5.36%       5.32%
+	Kernel: fdtd_step2_kernel(float*, float*, float*, int)
+        500        l1_cache_global_hit_rate              L1 Global Hit Rate      23.14%      24.30%      23.66%
+        500             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      46.85%      47.82%      47.22%
+	Kernel: fdtd_step3_kernel(float*, float*, float*, int)
+        500        l1_cache_global_hit_rate              L1 Global Hit Rate      37.86%      39.25%      38.28%
+        500             l2_l1_read_hit_rate          L2 Hit Rate (L1 Reads)      28.22%      29.90%      29.52%
+==24931== NVPROF is profiling process 24931, command: ./fdtd2d_profiler
+==24931== Profiling application: ./fdtd2d_profiler
+==24931== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 38.53%  281.07ms       500  562.14us  530.01us  567.59us  fdtd_step3_kernel(float*, float*, float*, int)
+ 32.25%  235.26ms       500  470.52us  437.24us  477.34us  fdtd_step2_kernel(float*, float*, float*, int)
+ 26.24%  191.46ms       500  382.92us  380.00us  384.33us  fdtd_step1_kernel(float*, float*, float*, float*, int)
+  2.05%  14.961ms         4  3.7402ms     799ns  5.1679ms  [CUDA memcpy HtoD]
+  0.93%  6.7665ms         1  6.7665ms  6.7665ms  6.7665ms  [CUDA memcpy DtoH]

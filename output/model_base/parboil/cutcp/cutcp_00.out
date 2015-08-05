@@ -1,0 +1,58 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+7 1
+34 1
+8 2
+6 10
+33 54
+5 25
+27 590
+29 296
+4 45
+15 203
+13 104
+12 19
+28 484
+21 1227
+20 1080
+18 836
+3 95
+2 444
+25 1045
+1 1745
+26 830
+99999999 3996
+24 1149
+22 1182
+0 20048
+23 1441
+16 392
+19 1020
+17 529
+31 158
+32 120
+30 221
+14 132
+11 4
+10 2
+
+CASE: 0 miss_compulsory: 3996 miss_capacity: 13157
+CASE: 1 miss_compulsory: 4010 miss_capacity: 13244
+CASE: 2 miss_compulsory: 1327 miss_capacity: 4605
+CASE: 3 miss_compulsory: 3996 miss_capacity: 13157
+modelled_accesses: 39530
+modelled_misses(compulsory): 1327
+modelled_misses(capacity): 13157
+modelled_misses(associativity): 0
+modelled_misses(latency): 2669
+modelled_misses(mshr): 0
+modelled_misses(tot_associativity): 17254
+modelled_misses(tot_latency): 5932
+modelled_misses(tot_mshr): 17153
+modelled_hits: 22377
+modelled_miss_rate: 43.3924
