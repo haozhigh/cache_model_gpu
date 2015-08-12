@@ -1,0 +1,8 @@
+32768 pixels in output; 3072 samples in trajectory; using 3072 samples
+Starting with _Z17ComputePhiMag_GPUPfS_S_i
+[Tracer] completed up to 8192 threads
+Starting with _Z12ComputeQ_GPUiiPfS_S_S_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z12ComputeQ_GPUiiPfS_S_S_S_
+Repeated kernel: _Z12ComputeQ_GPUiiPfS_S_S_S_
+Exiting program...

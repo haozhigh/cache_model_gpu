@@ -1,0 +1,54 @@
+0 mov.u32 %r0, %ctaid.x
+1 mov.u32 %r1, %ntid.x
+2 mul.lo.u32 %r2, %r0, %r1
+3 mov.u32 %r3, %tid.x
+4 add.u32 %r4, %r3, %r2
+5 ld.param.u32 %r5, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_n]
+6 setp.le.u32 %p6, %r5, %r4
+7 @%p6 bra BB_2_9
+8 cvt.u64.u32 %r7, %r4
+9 ld.param.u64 %r8, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_sample_g + 8]
+10 mul.wide.u32 %r9, %r4, 24
+11 add.u64 %r10, %r8, %r9
+12 ld.global.f32 %r11, [%r10 + 8]
+13 ld.global.f32 %r12, [%r10 + 12]
+14 ld.global.f32 %r13, [%r10 + 16]
+15 cvt.rzi.u32.f32 %r14, %r12
+16 cvt.rzi.u32.f32 %r15, %r13
+17 cvt.rzi.u32.f32 %r16, %r11
+18 ld.const.s32 %r17, [gridSize_c]
+19 mul.lo.u32 %r18, %r17, %r14
+20 ld.const.s32 %r19, [size_xy_c]
+21 mul.lo.u32 %r20, %r19, %r15
+22 add.u32 %r21, %r18, %r20
+23 add.u32 %r22, %r16, %r21
+24 ld.param.u64 %r23, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_binCount_g + 32]
+25 cvt.u64.u32 %r24, %r22
+26 mul.wide.u32 %r25, %r22, 4
+27 add.u64 %r26, %r23, %r25
+28 ld.param.u32 %r27, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_binsize + 40]
+29 ld.global.u32 %r28, [%r26]
+30 setp.ge.u32 %p29, %r28, %r27
+31 @%p29 bra BB_2_7
+32 mov.u32 %r30, 1
+33 atom.global.add.u32 %r31, [%r26], %r30
+34 mov.s32 %r32, %r31
+35 setp.ge.u32 %p33, %r32, %r27
+36 @%p33 bra BB_2_6
+37 mov.s32 %r34, %r22
+38 bra.uni BB_2_8
+39 ld.param.u32 %r34, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_gridNumElems + 44]
+40 reconverge
+41 mul.lo.u64 %r37, %r7, 4
+42 ld.param.u64 %r38, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_idxKey_g + 16]
+43 add.u64 %r39, %r38, %r37
+44 st.global.u32 [%r39], %r34
+45 ld.param.u64 %r40, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_idxValue_g + 24]
+46 add.u64 %r41, %r40, %r37
+47 st.global.u32 [%r41], %r4
+48 reconverge
+49 exit
+50 mov.s32 %r35, -1
+51 atom.global.add.u32 %r36, [%r26], %r35
+52 ld.param.u32 %r34, [__cudaparm__Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj_gridNumElems + 44]
+53 bra.uni BB_2_8

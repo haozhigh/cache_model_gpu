@@ -1,0 +1,22 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+41 3 124
+41 2 250
+41 1 884
+41 99999999 32
+41 0 758
+40 3 1396
+40 2 2464
+40 1 45755
+40 0 15665
+40 99999999 256
+26 99999999 16
+
+CASE: 0 miss_compulsory: 304
+CASE: 0 miss_capacity: 0
+modelled_hits: 67296

@@ -1,0 +1,7 @@
+Starting with _Z12atax_kernel1PfS_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z12atax_kernel2PfS_S_
+[Tracer] completed up to 8192 threads
+GPU Runtime: 0.182485s
+CPU Runtime: 0.000881s
+Non-Matching CPU-GPU Outputs Beyond Error Threshold of 0.50 Percent: 508

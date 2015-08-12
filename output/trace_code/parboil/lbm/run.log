@@ -1,0 +1,21 @@
+LBM_allocateGrid: allocated 185.2 MByte
+MAIN_printInfo:
+	grid size      : 120 x 120 x 150 = 2.16 * 10^6 Cells
+	nTimeSteps     : 100
+	result file    : ../output/bench_output/parboil/lbm_short.out
+	action         : store
+	simulation type: lid-driven cavity
+	obstacle file  : ../datasets/parboil/lbm/short/input/120_120_150_ldc.of
+
+LBM_allocateGrid: allocated 185.2 MByte
+LBM_allocateGrid: allocated 185.2 MByte
+LBM_showGridStatistics:
+	nObstacleCells:  343321 nAccelCells:   26912 nFluidCells: 1789767
+	minRho:   1.0000 maxRho:   1.0000 mass: 2.160000e+06
+	minU: 0.000000e+00 maxU: 0.000000e+00
+
+Starting with _Z27performStreamCollide_kernelPfS_
+[Tracer] completed up to 8192 threads
+Starting with _Z27performStreamCollide_kernelPfS_
+Repeated kernel: _Z27performStreamCollide_kernelPfS_
+Exiting program...

@@ -1,0 +1,489 @@
+0 mov.u32 %r0, %tid.x
+1 mov.u32 %r1, 2559
+2 setp.gt.u32 %p2, %r0, %r1
+3 @%p2 bra BB_1_4
+4 mov.u64 %r3, __cuda___cuda_local_var_36602_5_non_const_warp_hists128
+5 mov.u32 %r4, 0
+6 and.b32 %r5, %r0, 127
+7 cvt.u64.u32 %r6, %r5
+8 shr.u32 %r7, %r0, 7
+9 cvt.u64.u32 %r8, %r7
+10 mul.wide.u32 %r9, %r7, 128
+11 add.u64 %r10, %r6, %r9
+12 mul.lo.u64 %r11, %r10, 4
+13 add.u64 %r12, %r3, %r11
+14 st.shared.u32 [%r12], %r4
+15 reconverge
+16 mov.u64 %r3, __cuda___cuda_local_var_36602_5_non_const_warp_hists128
+17 add.u32 %r13, %r0, 256
+18 mov.u32 %r14, 2559
+19 setp.gt.u32 %p15, %r13, %r14
+20 @%p15 bra BB_1_6
+21 mov.u32 %r16, 0
+22 and.b32 %r17, %r13, 127
+23 cvt.u64.u32 %r18, %r17
+24 shr.u32 %r19, %r13, 7
+25 cvt.u64.u32 %r20, %r19
+26 mul.wide.u32 %r21, %r19, 128
+27 add.u64 %r22, %r18, %r21
+28 mul.lo.u64 %r23, %r22, 4
+29 add.u64 %r24, %r3, %r23
+30 st.shared.u32 [%r24], %r16
+31 reconverge
+32 add.u32 %r25, %r0, 512
+33 mov.u32 %r26, 2559
+34 setp.gt.u32 %p27, %r25, %r26
+35 @%p27 bra BB_1_8
+36 mov.u32 %r28, 0
+37 and.b32 %r29, %r25, 127
+38 cvt.u64.u32 %r30, %r29
+39 shr.u32 %r31, %r25, 7
+40 cvt.u64.u32 %r32, %r31
+41 mul.wide.u32 %r33, %r31, 128
+42 add.u64 %r34, %r30, %r33
+43 mul.lo.u64 %r35, %r34, 4
+44 add.u64 %r36, %r3, %r35
+45 st.shared.u32 [%r36], %r28
+46 reconverge
+47 add.u32 %r37, %r0, 768
+48 mov.u32 %r38, 2559
+49 setp.gt.u32 %p39, %r37, %r38
+50 @%p39 bra BB_1_10
+51 mov.u32 %r40, 0
+52 and.b32 %r41, %r37, 127
+53 cvt.u64.u32 %r42, %r41
+54 shr.u32 %r43, %r37, 7
+55 cvt.u64.u32 %r44, %r43
+56 mul.wide.u32 %r45, %r43, 128
+57 add.u64 %r46, %r42, %r45
+58 mul.lo.u64 %r47, %r46, 4
+59 add.u64 %r48, %r3, %r47
+60 st.shared.u32 [%r48], %r40
+61 reconverge
+62 add.u32 %r49, %r0, 1024
+63 mov.u32 %r50, 2559
+64 setp.gt.u32 %p51, %r49, %r50
+65 @%p51 bra BB_1_12
+66 mov.u32 %r52, 0
+67 and.b32 %r53, %r49, 127
+68 cvt.u64.u32 %r54, %r53
+69 shr.u32 %r55, %r49, 7
+70 cvt.u64.u32 %r56, %r55
+71 mul.wide.u32 %r57, %r55, 128
+72 add.u64 %r58, %r54, %r57
+73 mul.lo.u64 %r59, %r58, 4
+74 add.u64 %r60, %r3, %r59
+75 st.shared.u32 [%r60], %r52
+76 reconverge
+77 add.u32 %r61, %r0, 1280
+78 mov.u32 %r62, 2559
+79 setp.gt.u32 %p63, %r61, %r62
+80 @%p63 bra BB_1_14
+81 mov.u32 %r64, 0
+82 and.b32 %r65, %r61, 127
+83 cvt.u64.u32 %r66, %r65
+84 shr.u32 %r67, %r61, 7
+85 cvt.u64.u32 %r68, %r67
+86 mul.wide.u32 %r69, %r67, 128
+87 add.u64 %r70, %r66, %r69
+88 mul.lo.u64 %r71, %r70, 4
+89 add.u64 %r72, %r3, %r71
+90 st.shared.u32 [%r72], %r64
+91 reconverge
+92 add.u32 %r73, %r0, 1536
+93 mov.u32 %r74, 2559
+94 setp.gt.u32 %p75, %r73, %r74
+95 @%p75 bra BB_1_16
+96 mov.u32 %r76, 0
+97 and.b32 %r77, %r73, 127
+98 cvt.u64.u32 %r78, %r77
+99 shr.u32 %r79, %r73, 7
+100 cvt.u64.u32 %r80, %r79
+101 mul.wide.u32 %r81, %r79, 128
+102 add.u64 %r82, %r78, %r81
+103 mul.lo.u64 %r83, %r82, 4
+104 add.u64 %r84, %r3, %r83
+105 st.shared.u32 [%r84], %r76
+106 reconverge
+107 add.u32 %r85, %r0, 1792
+108 mov.u32 %r86, 2559
+109 setp.gt.u32 %p87, %r85, %r86
+110 @%p87 bra BB_1_18
+111 mov.u32 %r88, 0
+112 and.b32 %r89, %r85, 127
+113 cvt.u64.u32 %r90, %r89
+114 shr.u32 %r91, %r85, 7
+115 cvt.u64.u32 %r92, %r91
+116 mul.wide.u32 %r93, %r91, 128
+117 add.u64 %r94, %r90, %r93
+118 mul.lo.u64 %r95, %r94, 4
+119 add.u64 %r96, %r3, %r95
+120 st.shared.u32 [%r96], %r88
+121 reconverge
+122 add.u32 %r97, %r0, 2048
+123 mov.u32 %r98, 2559
+124 setp.gt.u32 %p99, %r97, %r98
+125 @%p99 bra BB_1_20
+126 mov.u32 %r100, 0
+127 and.b32 %r101, %r97, 127
+128 cvt.u64.u32 %r102, %r101
+129 shr.u32 %r103, %r97, 7
+130 cvt.u64.u32 %r104, %r103
+131 mul.wide.u32 %r105, %r103, 128
+132 add.u64 %r106, %r102, %r105
+133 mul.lo.u64 %r107, %r106, 4
+134 add.u64 %r108, %r3, %r107
+135 st.shared.u32 [%r108], %r100
+136 reconverge
+137 add.u32 %r109, %r0, 2304
+138 mov.u32 %r110, 2559
+139 setp.gt.u32 %p111, %r109, %r110
+140 @%p111 bra BB_1_22
+141 mov.u32 %r112, 0
+142 and.b32 %r113, %r109, 127
+143 cvt.u64.u32 %r114, %r113
+144 shr.u32 %r115, %r109, 7
+145 cvt.u64.u32 %r116, %r115
+146 mul.wide.u32 %r117, %r115, 128
+147 add.u64 %r118, %r114, %r117
+148 mul.lo.u64 %r119, %r118, 4
+149 add.u64 %r120, %r3, %r119
+150 st.shared.u32 [%r120], %r112
+151 reconverge
+152 ld.param.s32 %r121, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_NUM_SETS + 32]
+153 add.u32 %r122, %r121, 1
+154 mov.u32 %r123, %ctaid.x
+155 setp.le.u32 %p124, %r122, %r123
+156 ld.param.u64 %r125, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_all_z_data + 24]
+157 ld.param.u64 %r126, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_all_y_data + 16]
+158 ld.param.u64 %r127, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_all_x_data + 8]
+159 ld.param.s32 %r128, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_NUM_ELEMENTS + 36]
+160 @!%p124 bra BB_1_24
+161 mov.s64 %r129, %r127
+162 mov.s64 %r130, %r126
+163 mov.s64 %r131, %r125
+164 sub.u32 %r132, %r123, %r121
+165 mul.lo.u32 %r133, %r128, %r132
+166 cvt.u64.u32 %r134, %r133
+167 mul.wide.u32 %r135, %r133, 4
+168 add.u64 %r136, %r135, %r127
+169 add.u64 %r137, %r135, %r126
+170 add.u64 %r138, %r135, %r125
+171 bra.uni BB_1_25
+172 mul.lo.u32 %r139, %r128, %r123
+173 cvt.u64.u32 %r140, %r139
+174 mul.wide.u32 %r141, %r139, 4
+175 add.u64 %r142, %r141, %r127
+176 mov.s64 %r136, %r142
+177 add.u64 %r143, %r141, %r126
+178 mov.s64 %r137, %r143
+179 add.u64 %r144, %r141, %r125
+180 mov.s64 %r138, %r144
+181 mov.s64 %r129, %r142
+182 mov.s64 %r130, %r143
+183 mov.s64 %r131, %r144
+184 reconverge
+185 mov.u32 %r145, 0
+186 setp.eq.u32 %p146, %r128, %r145
+187 @%p146 bra BB_1_50
+188 setp.gt.u32 %p147, %r122, %r123
+189 selp.s32 %r148, 1, 0, %p147
+190 add.u32 %r149, %r128, 255
+191 shr.s32 %r150, %r149, 31
+192 mov.s32 %r151, 255
+193 and.b32 %r152, %r150, %r151
+194 add.s32 %r153, %r152, %r149
+195 shr.s32 %r154, %r153, 8
+196 mov.u32 %r155, 0
+197 mov.u64 %r156, __cuda___cuda_local_var_36599_44_non_const_data_s10368
+198 mov.u64 %r157, dev_binb
+199 mov.s32 %r158, %r154
+200 add.u32 %r159, %r155, %r0
+201 setp.le.u32 %p160, %r128, %r159
+202 @%p160 bra BB_1_29
+203 cvt.u64.u32 %r161, %r159
+204 mul.wide.u32 %r162, %r159, 4
+205 add.u64 %r163, %r162, %r130
+206 ld.global.f32 %r164, [%r163]
+207 add.u64 %r165, %r162, %r131
+208 ld.global.f32 %r166, [%r165]
+209 cvt.u64.u32 %r167, %r0
+210 mul.wide.u32 %r168, %r0, 12
+211 add.u64 %r169, %r156, %r168
+212 add.u64 %r170, %r162, %r129
+213 ld.global.f32 %r171, [%r170]
+214 st.shared.f32 [%r169], %r171
+215 st.shared.f32 [%r169 + 4], %r164
+216 st.shared.f32 [%r169 + 8], %r166
+217 reconverge
+218 bar.sync 0
+219 add.u32 %r172, %r155, 1
+220 mov.u32 %r173, 0
+221 selp.u32 %r174, %r172, %r173, %p147
+222 mov.s32 %r175, %r174
+223 setp.le.u32 %p176, %r128, %r174
+224 @%p176 bra BB_1_49
+225 sub.u32 %r177, %r128, %r174
+226 add.u32 %r178, %r177, 255
+227 shr.s32 %r179, %r178, 31
+228 mov.s32 %r180, 255
+229 and.b32 %r181, %r179, %r180
+230 add.s32 %r182, %r181, %r178
+231 shr.s32 %r183, %r182, 8
+232 add.u32 %r184, %r174, %r0
+233 setp.gt.u32 %p185, %r128, %r155
+234 mov.s32 %r186, %r183
+235 setp.le.u32 %p187, %r128, %r184
+236 @%p187 bra BB_1_33
+237 cvt.u64.u32 %r188, %r184
+238 mul.wide.u32 %r189, %r184, 4
+239 add.u64 %r190, %r189, %r136
+240 ld.global.f32 %r191, [%r190]
+241 mov.f32 %r192, %r191
+242 add.u64 %r193, %r189, %r137
+243 ld.global.f32 %r194, [%r193]
+244 mov.f32 %r195, %r194
+245 add.u64 %r196, %r189, %r138
+246 ld.global.f32 %r197, [%r196]
+247 mov.f32 %r198, %r197
+248 reconverge
+249 @!%p185 bra BB_1_48
+250 mov.f32 %r199, %r198
+251 mov.f32 %r200, %r192
+252 mov.f32 %r201, %r195
+253 mov.u32 %r202, 0
+254 cvt.u64.u32 %r203, %r202
+255 mul.wide.u32 %r204, %r202, 12
+256 add.u64 %r205, %r156, %r204
+257 ld.shared.f32 %r206, [%r205 + 4]
+258 mul.f32 %r207, %r206, %r201
+259 ld.shared.f32 %r208, [%r205]
+260 fma.rn.f32 %r209, %r208, %r200, %r207
+261 ld.shared.f32 %r210, [%r205 + 8]
+262 fma.rn.f32 %r211, %r210, %r199, %r209
+263 mov.u32 %r212, 20
+264 mov.u32 %r213, 0
+265 add.u32 %r214, %r212, %r213
+266 shr.u32 %r215, %r214, 1
+267 cvt.u64.u32 %r216, %r215
+268 mul.wide.u32 %r217, %r215, 4
+269 add.u64 %r218, %r157, %r217
+270 ld.const.f32 %r219, [%r218]
+271 setp.le.f32 %p220, %r219, %r211
+272 @!%p220 bra BB_1_38
+273 mov.s32 %r212, %r215
+274 bra.uni BB_1_39
+275 mov.s32 %r213, %r215
+276 reconverge
+277 add.u32 %r221, %r213, 1
+278 setp.gt.u32 %p222, %r212, %r221
+279 @%p222 bra BB_1_36
+280 reconverge
+281 cvt.u64.u32 %r223, %r213
+282 mul.wide.u32 %r224, %r213, 4
+283 add.u64 %r225, %r157, %r224
+284 ld.const.f32 %r226, [%r225]
+285 setp.gt.f32 %p227, %r226, %r211
+286 @!%p227 bra BB_1_46
+287 cvt.u64.u32 %r228, %r212
+288 mul.wide.u32 %r229, %r212, 4
+289 add.u64 %r230, %r157, %r229
+290 ld.const.f32 %r231, [%r230]
+291 setp.le.f32 %p232, %r231, %r211
+292 @!%p232 bra BB_1_46
+293 @%p124 bra BB_1_44
+294 add.u32 %r233, %r202, %r155
+295 setp.le.u32 %p234, %r184, %r233
+296 @%p234 bra BB_1_46
+297 setp.le.u32 %p235, %r128, %r184
+298 @%p235 bra BB_1_46
+299 shr.u32 %r236, %r0, 1
+300 cvt.u64.u32 %r237, %r236
+301 mul.lo.u64 %r238, %r228, 128
+302 add.u64 %r239, %r237, %r238
+303 mul.lo.u64 %r240, %r239, 4
+304 add.u64 %r241, %r3, %r240
+305 sub.u64 %r242, %r241, 512
+306 mov.u32 %r243, 1
+307 atom.shared.add.u32 %r244, [%r242], %r243
+308 reconverge
+309 add.u32 %r202, %r202, 1
+310 mov.u32 %r245, 255
+311 setp.gt.u32 %p246, %r202, %r245
+312 @%p246 bra BB_1_48
+313 add.u32 %r247, %r202, %r155
+314 setp.gt.u32 %p248, %r128, %r247
+315 @%p248 bra BB_1_35
+316 reconverge
+317 add.u32 %r175, %r175, 256
+318 add.u32 %r184, %r184, 256
+319 setp.gt.u32 %p249, %r128, %r175
+320 @%p249 bra BB_1_31
+321 reconverge
+322 add.u32 %r155, %r155, 256
+323 setp.gt.u32 %p250, %r128, %r155
+324 @%p250 bra BB_1_27
+325 reconverge
+326 and.b32 %r251, %r0, 63
+327 shr.u32 %r252, %r0, 6
+328 mov.u32 %r253, 19
+329 setp.le.u32 %p254, %r252, %r253
+330 add.u32 %r255, %r252, 4
+331 add.u32 %r256, %r252, 8
+332 add.u32 %r257, %r252, 12
+333 add.u32 %r258, %r252, 16
+334 selp.s32 %r259, 1, 0, %p254
+335 mov.u32 %r260, 19
+336 setp.le.u32 %p261, %r255, %r260
+337 mov.u32 %r262, 19
+338 setp.le.u32 %p263, %r256, %r262
+339 mov.u32 %r264, 19
+340 setp.le.u32 %p265, %r257, %r264
+341 mov.u32 %r266, 19
+342 setp.le.u32 %p267, %r258, %r266
+343 selp.s32 %r268, 1, 0, %p261
+344 selp.s32 %r269, 1, 0, %p263
+345 selp.s32 %r270, 1, 0, %p265
+346 selp.s32 %r271, 1, 0, %p267
+347 mov.u32 %r272, 64
+348 bar.sync 0
+349 setp.lt.u32 %p273, %r251, %r272
+350 selp.s32 %r274, 1, 0, %p273
+351 and.b32 %r275, %r274, %r259
+352 mov.u32 %r276, 0
+353 setp.eq.s32 %p277, %r275, %r276
+354 @%p277 bra BB_1_53
+355 cvt.u64.u32 %r278, %r251
+356 cvt.u64.u32 %r279, %r252
+357 mul.wide.u32 %r280, %r252, 128
+358 add.u64 %r281, %r280, %r278
+359 mul.lo.u64 %r282, %r281, 4
+360 add.u64 %r283, %r3, %r282
+361 ld.shared.u32 %r284, [%r283]
+362 add.u32 %r285, %r251, %r272
+363 cvt.u64.u32 %r286, %r285
+364 add.u64 %r287, %r286, %r280
+365 mul.lo.u64 %r288, %r287, 4
+366 add.u64 %r289, %r3, %r288
+367 ld.shared.u32 %r290, [%r289]
+368 add.u32 %r291, %r284, %r290
+369 cvt.u64.u32 %r292, %r291
+370 cvt.u32.u64 %r293, %r292
+371 st.shared.u32 [%r283], %r293
+372 reconverge
+373 bar.sync 0
+374 and.b32 %r294, %r274, %r268
+375 mov.u32 %r295, 0
+376 setp.eq.s32 %p296, %r294, %r295
+377 @%p296 bra BB_1_55
+378 cvt.u64.u32 %r278, %r251
+379 cvt.u64.u32 %r297, %r252
+380 mul.wide.u32 %r280, %r252, 128
+381 add.u64 %r298, %r280, %r278
+382 mul.lo.u64 %r299, %r298, 4
+383 add.u64 %r283, %r3, %r299
+384 ld.shared.u32 %r300, [%r283 + 2048]
+385 add.u32 %r301, %r251, %r272
+386 cvt.u64.u32 %r302, %r301
+387 add.u64 %r303, %r302, %r280
+388 mul.lo.u64 %r304, %r303, 4
+389 add.u64 %r305, %r3, %r304
+390 ld.shared.u32 %r306, [%r305 + 2048]
+391 add.u32 %r307, %r300, %r306
+392 cvt.u64.u32 %r308, %r307
+393 cvt.u32.u64 %r309, %r308
+394 st.shared.u32 [%r283 + 2048], %r309
+395 reconverge
+396 bar.sync 0
+397 and.b32 %r310, %r274, %r269
+398 mov.u32 %r311, 0
+399 setp.eq.s32 %p312, %r310, %r311
+400 @%p312 bra BB_1_57
+401 cvt.u64.u32 %r278, %r251
+402 cvt.u64.u32 %r313, %r252
+403 mul.wide.u32 %r280, %r252, 128
+404 add.u64 %r314, %r280, %r278
+405 mul.lo.u64 %r315, %r314, 4
+406 add.u64 %r283, %r3, %r315
+407 ld.shared.u32 %r316, [%r283 + 4096]
+408 add.u32 %r317, %r251, %r272
+409 cvt.u64.u32 %r318, %r317
+410 add.u64 %r319, %r318, %r280
+411 mul.lo.u64 %r320, %r319, 4
+412 add.u64 %r321, %r3, %r320
+413 ld.shared.u32 %r322, [%r321 + 4096]
+414 add.u32 %r323, %r316, %r322
+415 cvt.u64.u32 %r324, %r323
+416 cvt.u32.u64 %r325, %r324
+417 st.shared.u32 [%r283 + 4096], %r325
+418 reconverge
+419 bar.sync 0
+420 and.b32 %r326, %r274, %r270
+421 mov.u32 %r327, 0
+422 setp.eq.s32 %p328, %r326, %r327
+423 @%p328 bra BB_1_59
+424 cvt.u64.u32 %r278, %r251
+425 cvt.u64.u32 %r329, %r252
+426 mul.wide.u32 %r280, %r252, 128
+427 add.u64 %r330, %r280, %r278
+428 mul.lo.u64 %r331, %r330, 4
+429 add.u64 %r283, %r3, %r331
+430 ld.shared.u32 %r332, [%r283 + 6144]
+431 add.u32 %r333, %r251, %r272
+432 cvt.u64.u32 %r334, %r333
+433 add.u64 %r335, %r334, %r280
+434 mul.lo.u64 %r336, %r335, 4
+435 add.u64 %r337, %r3, %r336
+436 ld.shared.u32 %r338, [%r337 + 6144]
+437 add.u32 %r339, %r332, %r338
+438 cvt.u64.u32 %r340, %r339
+439 cvt.u32.u64 %r341, %r340
+440 st.shared.u32 [%r283 + 6144], %r341
+441 reconverge
+442 bar.sync 0
+443 and.b32 %r342, %r274, %r271
+444 mov.u32 %r343, 0
+445 setp.eq.s32 %p344, %r342, %r343
+446 @%p344 bra BB_1_61
+447 cvt.u64.u32 %r278, %r251
+448 cvt.u64.u32 %r345, %r252
+449 mul.wide.u32 %r280, %r252, 128
+450 add.u64 %r346, %r280, %r278
+451 mul.lo.u64 %r347, %r346, 4
+452 add.u64 %r283, %r3, %r347
+453 ld.shared.u32 %r348, [%r283 + 8192]
+454 add.u32 %r349, %r251, %r272
+455 cvt.u64.u32 %r350, %r349
+456 add.u64 %r351, %r350, %r280
+457 mul.lo.u64 %r352, %r351, 4
+458 add.u64 %r353, %r3, %r352
+459 ld.shared.u32 %r354, [%r353 + 8192]
+460 add.u32 %r355, %r348, %r354
+461 cvt.u64.u32 %r356, %r355
+462 cvt.u32.u64 %r357, %r356
+463 st.shared.u32 [%r283 + 8192], %r357
+464 reconverge
+465 shr.u32 %r272, %r272, 1
+466 mov.u32 %r358, 0
+467 setp.ne.u32 %p359, %r272, %r358
+468 @%p359 bra BB_1_51
+469 reconverge
+470 bar.sync 0
+471 mov.u32 %r360, 19
+472 setp.gt.u32 %p361, %r0, %r360
+473 @%p361 bra BB_1_64
+474 cvt.u64.u32 %r362, %r0
+475 mul.wide.u32 %r363, %r0, 512
+476 add.u64 %r364, %r3, %r363
+477 ld.shared.u32 %r365, [%r364]
+478 cvt.u64.u32 %r366, %r365
+479 ld.param.u64 %r367, [__cudaparm__Z9gen_histsPmPfS0_S0_ii_histograms]
+480 mul.lo.u32 %r368, %r123, 20
+481 cvt.u64.u32 %r369, %r368
+482 mul.wide.u32 %r370, %r368, 8
+483 add.u64 %r371, %r367, %r370
+484 mul.wide.u32 %r372, %r0, 8
+485 add.u64 %r373, %r371, %r372
+486 st.global.u64 [%r373], %r366
+487 reconverge
+488 exit

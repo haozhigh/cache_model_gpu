@@ -1,0 +1,10 @@
+Starting with _Z9mysgemmNTPKfiS0_iPfiiff
+[Tracer] completed up to 8192 threads
+GFLOPs = 0.0109409
+IO        : 0.033154
+Kernel    : 0.359400
+Copy      : 0.000041
+Driver    : 0.359401
+Compute   : 0.000135
+CPU/Kernel Overlap: 0.359400
+Timer Wall Time: 0.392772

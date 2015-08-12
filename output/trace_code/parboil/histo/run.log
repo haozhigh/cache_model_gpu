@@ -1,0 +1,11 @@
+Starting with _Z20histo_prescan_kernelPjiS_
+[Tracer] completed up to 8192 threads
+Starting with _Z26histo_intermediates_kernelP5uint2jjjP6uchar4
+[Tracer] completed up to 8192 threads
+Starting with _Z17histo_main_kernelP6uchar4jjjjjPjS1_S1_
+[Tracer] completed up to 8192 threads
+Starting with _Z18histo_final_kerneljjjjPjS_S_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z20histo_prescan_kernelPjiS_
+Repeated kernel: _Z20histo_prescan_kernelPjiS_
+Exiting program...

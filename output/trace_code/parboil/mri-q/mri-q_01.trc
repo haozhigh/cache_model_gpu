@@ -1,0 +1,290 @@
+0 mov.u32 %r0, %ctaid.x
+1 mul.lo.u32 %r1, %r0, 512
+2 mov.u32 %r2, %tid.x
+3 add.u32 %r3, %r2, %r1
+4 ld.param.s32 %r4, [__cudaparm__Z17ComputePhiMag_GPUPfS_S_i_numK + 24]
+5 setp.le.s32 %p5, %r4, %r3
+6 @%p5 bra BB_1_4
+7 cvt.s64.s32 %r6, %r3
+8 mul.wide.s32 %r7, %r3, 4
+9 ld.param.u64 %r8, [__cudaparm__Z17ComputePhiMag_GPUPfS_S_i_phiR]
+10 add.u64 %r9, %r8, %r7
+11 ld.global.f32 %r10, [%r9]
+12 ld.param.u64 %r11, [__cudaparm__Z17ComputePhiMag_GPUPfS_S_i_phiI + 8]
+13 add.u64 %r12, %r11, %r7
+14 ld.global.f32 %r13, [%r12]
+15 mul.f32 %r14, %r13, %r13
+16 fma.rn.f32 %r15, %r10, %r10, %r14
+17 ld.param.u64 %r16, [__cudaparm__Z17ComputePhiMag_GPUPfS_S_i_phiMag + 16]
+18 add.u64 %r17, %r16, %r7
+19 st.global.f32 [%r17], %r15
+20 reconverge
+21 exit
+22 ld.param.s32 %r22, [__cudaparm__Z12ComputeQ_GPUiiPfS_S_S_S__numK]
+23 and.b32 %r23, %r22, 1
+24 mov.u32 %r24, 0
+25 setp.eq.u32 %p25, %r23, %r24
+26 @%p25 bra BB_2_38
+369 mov.s32 %r277, 0
+370 mov.u64 %r179, _Zcontext_4___cuda___cuda_result_6016492
+371 mov.u64 %r42, __cudart_i2opi_f
+372 mov.u64 %r60, _Zcontext_4___cuda___cuda_result_3216464
+373 reconverge
+374 mov.u32 %r278, 1023
+375 setp.gt.s32 %p279, %r277, %r278
+376 @%p279 bra BB_2_111
+377 setp.ge.s32 %p280, %r0, %r22
+378 @%p280 bra BB_2_111
+379 mov.u64 %r281, ck
+380 cvt.s64.s32 %r282, %r277
+381 mul.wide.s32 %r283, %r277, 16
+382 add.u64 %r284, %r281, %r283
+383 ld.const.f32 %r285, [%r284 + 4]
+384 ld.const.f32 %r286, [%r284]
+385 ld.const.f32 %r287, [%r284 + 8]
+386 mul.f32 %r288, %r285, %r12
+387 fma.rn.f32 %r289, %r286, %r9, %r288
+388 fma.rn.f32 %r290, %r287, %r15, %r289
+389 mov.f32 %r291, 0f40c90fdb
+390 mul.f32 %r292, %r290, %r291
+391 mov.f32 %r293, %r292
+392 abs.f32 %r294, %r292
+393 mov.f32 %r295, 0f7f800000
+394 setp.eq.f32 %p296, %r294, %r295
+395 @!%p296 bra BB_2_43
+398 reconverge
+399 abs.f32 %r298, %r293
+400 mov.f32 %r299, 0f473ba700
+401 setp.gt.f32 %p300, %r298, %r299
+402 @!%p300 bra BB_2_53
+508 mov.f32 %r367, 0f3f22f983
+509 mul.f32 %r368, %r293, %r367
+510 cvt.rni.s32.f32 %r369, %r368
+511 mov.s32 %r95, %r369
+512 cvt.rn.f32.s32 %r370, %r369
+513 neg.f32 %r371, %r370
+514 mov.f32 %r372, 0f27c234c5
+515 mov.f32 %r373, 0f33a22168
+516 mov.f32 %r374, 0f3fc90fda
+517 fma.rn.f32 %r375, %r371, %r374, %r293
+518 fma.rn.f32 %r376, %r371, %r373, %r375
+519 fma.rn.f32 %r120, %r371, %r372, %r376
+520 reconverge
+521 add.s32 %r131, %r95, 1
+522 mov.f32 %r377, %r120
+523 mul.f32 %r133, %r377, %r377
+524 and.b32 %r378, %r131, 1
+525 mov.u32 %r379, 0
+526 setp.eq.s32 %p380, %r378, %r379
+527 @%p380 bra BB_2_56
+528 mov.f32 %r381, 0f37ccf5ce
+529 mov.f32 %r382, 0fbab6061a
+530 fma.rn.f32 %r383, %r381, %r133, %r382
+531 mov.f32 %r384, 0f3d2aaaa5
+532 fma.rn.f32 %r385, %r383, %r133, %r384
+533 mov.f32 %r386, 0fbf000000
+534 fma.rn.f32 %r387, %r385, %r133, %r386
+535 mov.f32 %r388, 0f3f800000
+536 fma.rn.f32 %r145, %r387, %r133, %r388
+537 bra.uni BB_2_57
+538 mov.f32 %r389, 0fb94ca1f9
+539 mov.f32 %r390, 0f3c08839e
+540 fma.rn.f32 %r391, %r389, %r133, %r390
+541 mov.f32 %r392, 0fbe2aaaa3
+542 fma.rn.f32 %r393, %r391, %r133, %r392
+543 mul.f32 %r394, %r133, %r393
+544 fma.rn.f32 %r145, %r394, %r377, %r377
+545 reconverge
+546 neg.f32 %r395, %r145
+547 and.b32 %r396, %r131, 2
+548 mov.s32 %r397, 0
+549 setp.ne.s32 %p398, %r396, %r397
+550 selp.f32 %r145, %r395, %r145, %p398
+551 ld.const.f32 %r399, [%r284 + 12]
+552 fma.rn.f32 %r18, %r399, %r145, %r18
+553 mov.f32 %r157, %r292
+554 @!%p296 bra BB_2_59
+557 reconverge
+558 abs.f32 %r401, %r157
+559 mov.f32 %r402, 0f473ba700
+560 setp.gt.f32 %p403, %r401, %r402
+561 @!%p403 bra BB_2_69
+667 mov.f32 %r461, 0f3f22f983
+668 mul.f32 %r241, %r157, %r461
+669 cvt.rni.s32.f32 %r242, %r241
+670 mov.s32 %r214, %r242
+671 cvt.rn.f32.s32 %r243, %r242
+672 neg.f32 %r244, %r243
+673 mov.f32 %r462, 0f27c234c5
+674 mov.f32 %r463, 0f33a22168
+675 mov.f32 %r464, 0f3fc90fda
+676 fma.rn.f32 %r465, %r244, %r464, %r157
+677 fma.rn.f32 %r466, %r244, %r463, %r465
+678 fma.rn.f32 %r239, %r244, %r462, %r466
+679 reconverge
+680 mov.f32 %r467, %r239
+681 mul.f32 %r251, %r467, %r467
+682 and.b32 %r468, %r214, 1
+683 mov.u32 %r469, 0
+684 setp.eq.s32 %p470, %r468, %r469
+685 @%p470 bra BB_2_72
+686 mov.f32 %r471, 0f37ccf5ce
+687 mov.f32 %r472, 0fbab6061a
+688 fma.rn.f32 %r473, %r471, %r251, %r472
+689 mov.f32 %r474, 0f3d2aaaa5
+690 fma.rn.f32 %r475, %r473, %r251, %r474
+691 mov.f32 %r476, 0fbf000000
+692 fma.rn.f32 %r477, %r475, %r251, %r476
+693 mov.f32 %r478, 0f3f800000
+694 fma.rn.f32 %r263, %r477, %r251, %r478
+695 bra.uni BB_2_73
+696 mov.f32 %r479, 0fb94ca1f9
+697 mov.f32 %r480, 0f3c08839e
+698 fma.rn.f32 %r481, %r479, %r251, %r480
+699 mov.f32 %r482, 0fbe2aaaa3
+700 fma.rn.f32 %r483, %r481, %r251, %r482
+701 mul.f32 %r484, %r251, %r483
+702 fma.rn.f32 %r263, %r484, %r467, %r467
+703 reconverge
+704 neg.f32 %r485, %r263
+705 and.b32 %r486, %r214, 2
+706 mov.s32 %r487, 0
+707 setp.ne.s32 %p488, %r486, %r487
+708 selp.f32 %r263, %r485, %r263, %p488
+709 mov.f32 %r489, 0f00000000
+710 setp.eq.f32 %p490, %r467, %r489
+711 @!%p490 bra BB_2_75
+712 mov.f32 %r491, 0f00000000
+713 mul.rn.f32 %r263, %r467, %r491
+714 reconverge
+715 fma.rn.f32 %r21, %r399, %r263, %r21
+716 ld.const.f32 %r492, [%r284 + 20]
+717 ld.const.f32 %r493, [%r284 + 16]
+718 ld.const.f32 %r494, [%r284 + 24]
+719 mul.f32 %r495, %r492, %r12
+720 fma.rn.f32 %r496, %r493, %r9, %r495
+721 fma.rn.f32 %r497, %r494, %r15, %r496
+722 mov.f32 %r498, 0f40c90fdb
+723 mul.f32 %r499, %r497, %r498
+724 mov.f32 %r500, %r499
+725 abs.f32 %r501, %r499
+726 mov.f32 %r502, 0f7f800000
+727 setp.eq.f32 %p503, %r501, %r502
+728 @!%p503 bra BB_2_77
+731 reconverge
+732 abs.f32 %r505, %r500
+733 mov.f32 %r506, 0f473ba700
+734 setp.gt.f32 %p507, %r505, %r506
+735 @!%p507 bra BB_2_87
+841 mov.f32 %r574, 0f3f22f983
+842 mul.f32 %r575, %r500, %r574
+843 cvt.rni.s32.f32 %r576, %r575
+844 mov.s32 %r95, %r576
+845 cvt.rn.f32.s32 %r577, %r576
+846 neg.f32 %r578, %r577
+847 mov.f32 %r579, 0f27c234c5
+848 mov.f32 %r580, 0f33a22168
+849 mov.f32 %r581, 0f3fc90fda
+850 fma.rn.f32 %r582, %r578, %r581, %r500
+851 fma.rn.f32 %r583, %r578, %r580, %r582
+852 fma.rn.f32 %r120, %r578, %r579, %r583
+853 reconverge
+854 add.s32 %r131, %r95, 1
+855 mov.f32 %r584, %r120
+856 mul.f32 %r133, %r584, %r584
+857 and.b32 %r585, %r131, 1
+858 mov.u32 %r586, 0
+859 setp.eq.s32 %p587, %r585, %r586
+860 @%p587 bra BB_2_90
+861 mov.f32 %r588, 0f37ccf5ce
+862 mov.f32 %r589, 0fbab6061a
+863 fma.rn.f32 %r590, %r588, %r133, %r589
+864 mov.f32 %r591, 0f3d2aaaa5
+865 fma.rn.f32 %r592, %r590, %r133, %r591
+866 mov.f32 %r593, 0fbf000000
+867 fma.rn.f32 %r594, %r592, %r133, %r593
+868 mov.f32 %r595, 0f3f800000
+869 fma.rn.f32 %r145, %r594, %r133, %r595
+870 bra.uni BB_2_91
+871 mov.f32 %r596, 0fb94ca1f9
+872 mov.f32 %r597, 0f3c08839e
+873 fma.rn.f32 %r598, %r596, %r133, %r597
+874 mov.f32 %r599, 0fbe2aaaa3
+875 fma.rn.f32 %r600, %r598, %r133, %r599
+876 mul.f32 %r601, %r133, %r600
+877 fma.rn.f32 %r145, %r601, %r584, %r584
+878 reconverge
+879 neg.f32 %r602, %r145
+880 and.b32 %r603, %r131, 2
+881 mov.s32 %r604, 0
+882 setp.ne.s32 %p605, %r603, %r604
+883 selp.f32 %r145, %r602, %r145, %p605
+884 ld.const.f32 %r606, [%r284 + 28]
+885 fma.rn.f32 %r18, %r606, %r145, %r18
+886 mov.f32 %r157, %r499
+887 @!%p503 bra BB_2_93
+890 reconverge
+891 abs.f32 %r608, %r157
+892 mov.f32 %r609, 0f473ba700
+893 setp.gt.f32 %p610, %r608, %r609
+894 @!%p610 bra BB_2_103
+1000 mov.f32 %r668, 0f3f22f983
+1001 mul.f32 %r241, %r157, %r668
+1002 cvt.rni.s32.f32 %r242, %r241
+1003 mov.s32 %r214, %r242
+1004 cvt.rn.f32.s32 %r243, %r242
+1005 neg.f32 %r244, %r243
+1006 mov.f32 %r669, 0f27c234c5
+1007 mov.f32 %r670, 0f33a22168
+1008 mov.f32 %r671, 0f3fc90fda
+1009 fma.rn.f32 %r672, %r244, %r671, %r157
+1010 fma.rn.f32 %r673, %r244, %r670, %r672
+1011 fma.rn.f32 %r239, %r244, %r669, %r673
+1012 reconverge
+1013 mov.f32 %r674, %r239
+1014 mul.f32 %r251, %r674, %r674
+1015 and.b32 %r675, %r214, 1
+1016 mov.u32 %r676, 0
+1017 setp.eq.s32 %p677, %r675, %r676
+1018 @%p677 bra BB_2_106
+1019 mov.f32 %r678, 0f37ccf5ce
+1020 mov.f32 %r679, 0fbab6061a
+1021 fma.rn.f32 %r680, %r678, %r251, %r679
+1022 mov.f32 %r681, 0f3d2aaaa5
+1023 fma.rn.f32 %r682, %r680, %r251, %r681
+1024 mov.f32 %r683, 0fbf000000
+1025 fma.rn.f32 %r684, %r682, %r251, %r683
+1026 mov.f32 %r685, 0f3f800000
+1027 fma.rn.f32 %r263, %r684, %r251, %r685
+1028 bra.uni BB_2_107
+1029 mov.f32 %r686, 0fb94ca1f9
+1030 mov.f32 %r687, 0f3c08839e
+1031 fma.rn.f32 %r688, %r686, %r251, %r687
+1032 mov.f32 %r689, 0fbe2aaaa3
+1033 fma.rn.f32 %r690, %r688, %r251, %r689
+1034 mul.f32 %r691, %r251, %r690
+1035 fma.rn.f32 %r263, %r691, %r674, %r674
+1036 reconverge
+1037 neg.f32 %r692, %r263
+1038 and.b32 %r693, %r214, 2
+1039 mov.s32 %r694, 0
+1040 setp.ne.s32 %p695, %r693, %r694
+1041 selp.f32 %r263, %r692, %r263, %p695
+1042 mov.f32 %r696, 0f00000000
+1043 setp.eq.f32 %p697, %r674, %r696
+1044 @!%p697 bra BB_2_109
+1045 mov.f32 %r698, 0f00000000
+1046 mul.rn.f32 %r263, %r674, %r698
+1047 reconverge
+1048 fma.rn.f32 %r21, %r606, %r263, %r21
+1049 add.s32 %r277, %r277, 2
+1050 add.s32 %r0, %r0, 2
+1051 mov.u32 %r699, 1023
+1052 setp.gt.s32 %p700, %r277, %r699
+1053 @%p700 bra BB_2_111
+1054 setp.lt.s32 %p701, %r0, %r22
+1055 @%p701 bra BB_2_41
+1056 reconverge
+1057 st.global.f32 [%r17], %r18
+1058 st.global.f32 [%r20], %r21
+1059 exit

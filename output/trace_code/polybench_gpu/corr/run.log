@@ -1,0 +1,9 @@
+Starting with _Z11mean_kernelPfS_
+[Tracer] completed up to 8192 threads
+Starting with _Z10std_kernelPfS_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z13reduce_kernelPfS_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z11corr_kernelPfS_
+Special kernel: _Z11corr_kernelPfS_
+Exiting program...

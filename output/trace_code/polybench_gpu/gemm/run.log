@@ -1,0 +1,5 @@
+Starting with _Z11gemm_kernelPfS_S_
+[Tracer] completed up to 8192 threads
+GPU Runtime: 6.509498s
+CPU Runtime: 0.030730s
+Non-Matching CPU-GPU Outputs Beyond Error Threshold of 0.05 Percent: 0

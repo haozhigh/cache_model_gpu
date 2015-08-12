@@ -1,0 +1,8 @@
+CUDA accelerated 7 points stencil codes****
+Original version by Li-Wen Chang <lchang20@illinois.edu> and I-Jui Sung<sung10@illinois.edu>
+This version maintained by Chris Rodrigues  ***********
+Starting with _Z24block2D_hybrid_coarsen_xffPfS_iii
+[Tracer] completed up to 8192 threads
+Starting with _Z24block2D_hybrid_coarsen_xffPfS_iii
+Repeated kernel: _Z24block2D_hybrid_coarsen_xffPfS_iii
+Exiting program...

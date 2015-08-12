@@ -1,0 +1,31 @@
+0 mov.u32 %r0, %ctaid.x
+1 mov.u32 %r1, %ntid.x
+2 mul.lo.u32 %r2, %r0, %r1
+3 mov.u32 %r3, %tid.x
+4 add.u32 %r4, %r3, %r2
+5 mov.u32 %r5, 511
+6 setp.gt.s32 %p6, %r4, %r5
+7 @%p6 bra BB_1_5
+8 cvt.s64.s32 %r7, %r4
+9 mul.wide.s32 %r8, %r4, 4
+10 ld.param.u64 %r9, [__cudaparm__Z12bicg_kernel1PfS_S__s + 16]
+11 add.u64 %r10, %r9, %r8
+12 mov.f32 %r11, 0f00000000
+13 mov.f32 %r12, 0f00000000
+14 st.global.f32 [%r10], %r12
+15 mov.s32 %r13, %r4
+16 add.s32 %r14, %r4, 262144
+17 ld.param.u64 %r15, [__cudaparm__Z12bicg_kernel1PfS_S__r + 8]
+18 ld.param.u64 %r16, [__cudaparm__Z12bicg_kernel1PfS_S__A]
+19 add.u64 %r17, %r16, %r8
+20 ld.global.f32 %r18, [%r17]
+21 ld.global.f32 %r19, [%r15]
+22 fma.rn.f32 %r11, %r18, %r19, %r11
+23 st.global.f32 [%r10], %r11
+24 add.u64 %r15, %r15, 4
+25 add.s32 %r13, %r13, 512
+26 add.u64 %r17, %r17, 2048
+27 setp.ne.s32 %p20, %r13, %r14
+28 @%p20 bra BB_1_4
+29 reconverge
+30 exit

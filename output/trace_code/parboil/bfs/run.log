@@ -1,0 +1,6 @@
+Starting GPU kernel
+Starting with _Z17BFS_in_GPU_kernelPiS_P4int2S1_S_S_iS_iiS_
+[Tracer] completed up to 8192 threads
+Starting with _Z26BFS_kernel_multi_blk_inGPUPiS_P4int2S1_S_S_S_S_iiS_S_S_S_
+Special kernel: _Z26BFS_kernel_multi_blk_inGPUPiS_P4int2S1_S_S_S_S_iiS_S_S_S_
+Exiting program...

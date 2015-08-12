@@ -1,0 +1,30 @@
+line_size: 128
+cache_bytes: 16384
+cache_lines: 128
+cache_ways: 4
+cache_sets: 32
+
+histogram:
+21 16 1
+21 17 3
+21 14 12
+21 15 12
+21 12 64
+21 13 35
+21 11 93
+21 10 140
+21 9 196
+21 0 53443
+21 99999999 146944
+21 1 30972
+21 2 12599
+21 3 6393
+21 4 3638
+21 5 1928
+21 6 811
+21 7 499
+21 8 265
+
+CASE: 0 miss_compulsory: 146944
+CASE: 0 miss_capacity: 4059
+modelled_hits: 107045

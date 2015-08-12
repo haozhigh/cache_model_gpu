@@ -1,0 +1,12 @@
+read 5943 atoms from file '../datasets/parboil/cutcp/small/input/watbox.sl40.pqr'
+extent of domain is:
+  minimum -19.998 -19.941 -19.961
+  maximum 19.974 20 19.974
+padding domain by 0.5 Angstroms
+domain lengths are 40.972 by 40.941 by 40.935
+Invoking CUDA kernel on 11 region planes...
+  computing plane 0Starting with _Z37cuda_cutoff_potential_lattice6overlapiiP6float4fffPfi
+[Tracer] completed up to 8192 threads
+  computing plane 1Starting with _Z37cuda_cutoff_potential_lattice6overlapiiP6float4fffPfi
+Repeated kernel: _Z37cuda_cutoff_potential_lattice6overlapiiP6float4fffPfi
+Exiting program...

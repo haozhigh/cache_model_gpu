@@ -5,15 +5,24 @@ cache_ways: 4
 cache_sets: 32
 
 histogram:
-4 164
-2 466
-8 6206
-6 4586
-5 88354
-7 155636
-0 6700
+12 38
+11 316
+14 16
+13 140
+16 4
+15 68
+10 66
 99999999 8240
+0 6640
+7 158402
+5 84020
+6 4396
+8 6320
+2 506
+4 248
+3 342
+9 590
 
 CASE: 0 miss_compulsory: 8240
-CASE: 0 miss_capacity: 254782
-modelled_hits: 7330
+CASE: 0 miss_capacity: 254376
+modelled_hits: 7736

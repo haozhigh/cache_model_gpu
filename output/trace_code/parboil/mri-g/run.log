@@ -1,0 +1,32 @@
+
+Reading parameters
+  Number of samples = 2655910
+  Grid Size = 256x256x256
+  Input Matrix Size = 60x60x60
+  Recon Matrix Size = 60x60x60
+  Kernel Width = 5.000000
+  KMax = 150.00 150.00 150.00
+  Oversampling = 5.000000
+  GPU Binsize = 32
+  Use LUT = Yes
+Reading input data from files
+Generating Look-Up Table
+Running gold version
+Running CUDA version
+Starting with _Z14binning_kerneljP20ReconstructionSamplePjS1_S1_jj
+[Tracer] completed up to 8192 threads
+Starting with _Z9splitSortiiPjS_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z14scan_L1_kerneljPjS_
+[Tracer] completed up to 8192 threads
+Starting with _Z18scan_inter1_kernelPjj
+[Tracer] completed up to 8192 threads
+Starting with _Z18scan_inter2_kernelPjj
+[Tracer] completed up to 8192 threads
+Starting with _Z10uniformAddjPjS_
+[Tracer] completed up to 8192 threads
+Starting with _Z14splitRearrangeiiPjS_S_S_S_
+[Tracer] completed up to 8192 threads
+Starting with _Z9splitSortiiPjS_S_
+Repeated kernel: _Z9splitSortiiPjS_S_
+Exiting program...

@@ -1,0 +1,290 @@
+0 mov.u64 %r0, sh_A0
+1 mov.u32 %r1, %tid.y
+2 mov.u32 %r2, %ntid.x
+3 mul.lo.u32 %r3, %r1, %r2
+4 mul.lo.u32 %r4, %r3, 2
+5 mov.u32 %r5, %tid.x
+6 add.u32 %r6, %r4, %r5
+7 cvt.s64.s32 %r7, %r6
+8 mul.wide.s32 %r8, %r6, 4
+9 add.u64 %r9, %r0, %r8
+10 mov.f32 %r10, 0f00000000
+11 st.shared.f32 [%r9], %r10
+12 add.u32 %r11, %r5, %r2
+13 add.u32 %r12, %r11, %r4
+14 cvt.s64.s32 %r13, %r12
+15 mul.wide.s32 %r14, %r12, 4
+16 add.u64 %r15, %r0, %r14
+17 mov.f32 %r16, 0f00000000
+18 st.shared.f32 [%r15], %r16
+19 bar.sync 0
+20 mov.u32 %r17, %ctaid.x
+21 mul.lo.u32 %r18, %r17, %r2
+22 mov.u32 %r19, %ntid.y
+23 mov.u32 %r20, %ctaid.y
+24 mul.lo.u32 %r21, %r20, %r19
+25 mul.lo.u32 %r22, %r18, 2
+26 add.u32 %r23, %r21, %r1
+27 add.u32 %r24, %r22, %r5
+28 ld.param.s32 %r25, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_ny + 28]
+29 setp.gt.s32 %p26, %r25, %r23
+30 ld.param.s32 %r27, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_nx + 24]
+31 setp.gt.s32 %p28, %r27, %r24
+32 selp.s32 %r29, 1, 0, %p26
+33 selp.s32 %r30, 1, 0, %p28
+34 and.b32 %r31, %r29, %r30
+35 mov.u32 %r32, 0
+36 setp.eq.s32 %p33, %r31, %r32
+37 @%p33 bra BB_1_4
+38 ld.param.u64 %r34, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+39 mul.lo.s32 %r35, %r27, %r23
+40 add.s32 %r36, %r24, %r35
+41 cvt.s64.s32 %r37, %r36
+42 mul.wide.s32 %r38, %r36, 4
+43 add.u64 %r39, %r34, %r38
+44 ld.global.f32 %r40, [%r39]
+45 add.s32 %r41, %r25, %r23
+46 mul.lo.s32 %r42, %r27, %r41
+47 add.s32 %r43, %r24, %r42
+48 cvt.s64.s32 %r44, %r43
+49 mul.wide.s32 %r45, %r43, 4
+50 add.u64 %r46, %r34, %r45
+51 ld.global.f32 %r47, [%r46]
+52 st.shared.f32 [%r9], %r47
+53 bra.uni BB_1_5
+55 reconverge
+56 add.u32 %r48, %r24, %r2
+57 setp.gt.s32 %p49, %r27, %r48
+58 selp.s32 %r50, 1, 0, %p49
+59 and.b32 %r51, %r29, %r50
+60 mov.u32 %r52, 0
+61 setp.eq.s32 %p53, %r51, %r52
+62 @%p53 bra BB_1_7
+63 ld.param.u64 %r54, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+64 mul.lo.s32 %r55, %r27, %r23
+65 add.s32 %r56, %r48, %r55
+66 cvt.s64.s32 %r57, %r56
+67 mul.wide.s32 %r58, %r56, 4
+68 add.u64 %r59, %r54, %r58
+69 ld.global.f32 %r60, [%r59]
+70 add.s32 %r61, %r25, %r23
+71 mul.lo.s32 %r62, %r27, %r61
+72 add.s32 %r63, %r48, %r62
+73 cvt.s64.s32 %r64, %r63
+74 mul.wide.s32 %r65, %r63, 4
+75 add.u64 %r66, %r54, %r65
+76 ld.global.f32 %r67, [%r66]
+77 st.shared.f32 [%r15], %r67
+78 bra.uni BB_1_8
+80 reconverge
+81 bar.sync 0
+82 ld.param.s32 %r68, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_nz + 32]
+83 sub.s32 %r69, %r68, 1
+84 mov.u32 %r70, 1
+85 setp.le.s32 %p71, %r69, %r70
+86 @%p71 bra BB_1_37
+87 sub.u32 %r72, %r19, 1
+88 setp.eq.u32 %p73, %r72, %r1
+89 selp.s32 %r74, 1, 0, %p73
+90 mov.u32 %r75, 0
+91 setp.eq.u32 %p76, %r1, %r75
+92 selp.s32 %r77, 1, 0, %p76
+93 mul.lo.u32 %r78, %r2, 2
+94 sub.u32 %r79, %r78, 1
+95 setp.eq.u32 %p80, %r11, %r79
+96 selp.s32 %r81, 1, 0, %p80
+97 mov.u32 %r82, 0
+98 setp.eq.u32 %p83, %r5, %r82
+99 selp.s32 %r84, 1, 0, %p83
+100 sub.s32 %r85, %r68, 2
+101 sub.s32 %r86, %r25, 1
+102 sub.s32 %r87, %r27, 1
+103 setp.gt.s32 %p88, %r86, %r23
+104 mov.s32 %r89, 0
+105 setp.gt.s32 %p90, %r23, %r89
+106 setp.gt.s32 %p91, %r87, %r24
+107 mov.s32 %r92, 0
+108 setp.gt.s32 %p93, %r24, %r92
+109 selp.s32 %r94, 1, 0, %p88
+110 selp.s32 %r95, 1, 0, %p90
+111 setp.gt.s32 %p96, %r87, %r48
+112 selp.s32 %r97, 1, 0, %p91
+113 selp.s32 %r98, 1, 0, %p93
+114 selp.s32 %r99, 1, 0, %p96
+115 and.b32 %r100, %r95, %r98
+116 and.b32 %r101, %r95, %r99
+117 and.b32 %r102, %r97, %r100
+118 and.b32 %r103, %r94, %r101
+119 and.b32 %r104, %r94, %r102
+120 mov.s32 %r105, 1
+121 mov.f32 %r106, 0f00000000
+122 mov.f32 %r107, 0f00000000
+123 mov.s32 %r108, %r85
+124 mov.u32 %r109, 0
+125 setp.eq.s32 %p110, %r31, %r109
+126 @%p110 bra BB_1_12
+127 ld.param.u64 %r111, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+128 add.s32 %r112, %r105, 1
+129 mul.lo.s32 %r113, %r25, %r112
+130 add.s32 %r114, %r23, %r113
+131 mul.lo.s32 %r115, %r27, %r114
+132 add.s32 %r116, %r24, %r115
+133 cvt.s64.s32 %r117, %r116
+134 mul.wide.s32 %r118, %r116, 4
+135 add.u64 %r119, %r111, %r118
+136 ld.global.f32 %r107, [%r119]
+137 reconverge
+138 mov.u32 %r120, 0
+139 setp.eq.s32 %p121, %r104, %r120
+140 @%p121 bra BB_1_23
+141 mul.lo.s32 %r122, %r105, %r25
+142 add.s32 %r123, %r122, %r23
+143 @!%p73 bra BB_1_15
+144 ld.param.u64 %r124, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+145 add.s32 %r125, %r123, 1
+146 mul.lo.s32 %r126, %r27, %r125
+147 add.s32 %r127, %r24, %r126
+148 cvt.s64.s32 %r128, %r127
+149 mul.wide.s32 %r129, %r127, 4
+150 add.u64 %r130, %r124, %r129
+151 ld.global.f32 %r131, [%r130]
+152 bra.uni BB_1_16
+153 add.u32 %r132, %r78, %r6
+154 cvt.u64.u32 %r133, %r132
+155 mul.wide.u32 %r134, %r132, 4
+156 add.u64 %r135, %r0, %r134
+157 ld.shared.f32 %r131, [%r135]
+158 reconverge
+159 @!%p76 bra BB_1_18
+160 ld.param.u64 %r136, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+161 sub.s32 %r137, %r123, 1
+162 mul.lo.s32 %r138, %r27, %r137
+163 add.s32 %r139, %r24, %r138
+164 cvt.s64.s32 %r140, %r139
+165 mul.wide.s32 %r141, %r139, 4
+166 add.u64 %r142, %r136, %r141
+167 ld.global.f32 %r143, [%r142]
+168 bra.uni BB_1_19
+169 sub.u32 %r144, %r6, %r78
+170 cvt.u64.u32 %r145, %r144
+171 mul.wide.u32 %r146, %r144, 4
+172 add.u64 %r147, %r0, %r146
+173 ld.shared.f32 %r143, [%r147]
+174 reconverge
+175 mul.lo.s32 %r148, %r123, %r27
+176 add.s32 %r149, %r24, %r148
+177 cvt.s64.s32 %r150, %r149
+178 mul.wide.s32 %r151, %r149, 4
+179 @!%p83 bra BB_1_21
+180 ld.param.u64 %r152, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+181 add.u64 %r153, %r152, %r151
+182 ld.global.f32 %r154, [%r153 + -4]
+183 bra.uni BB_1_22
+184 ld.shared.f32 %r154, [%r9 + -4]
+185 reconverge
+186 ld.shared.f32 %r155, [%r9]
+187 ld.param.f32 %r156, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_c0]
+188 mul.f32 %r157, %r155, %r156
+189 ld.param.f32 %r158, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_c1 + 4]
+190 ld.shared.f32 %r159, [%r9 + 4]
+191 add.f32 %r160, %r107, %r40
+192 add.f32 %r161, %r131, %r160
+193 add.f32 %r162, %r143, %r161
+194 add.f32 %r163, %r159, %r162
+195 add.f32 %r164, %r154, %r163
+196 mul.f32 %r165, %r158, %r164
+197 sub.f32 %r166, %r165, %r157
+198 ld.param.u64 %r167, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_Anext + 16]
+199 add.u64 %r168, %r167, %r151
+200 st.global.f32 [%r168], %r166
+201 reconverge
+202 mov.u32 %r169, 0
+203 setp.eq.s32 %p170, %r51, %r169
+204 @%p170 bra BB_1_25
+205 ld.param.u64 %r171, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+206 add.s32 %r172, %r105, 1
+207 mul.lo.s32 %r173, %r25, %r172
+208 add.s32 %r174, %r23, %r173
+209 mul.lo.s32 %r175, %r27, %r174
+210 add.s32 %r176, %r48, %r175
+211 cvt.s64.s32 %r177, %r176
+212 mul.wide.s32 %r178, %r176, 4
+213 add.u64 %r179, %r171, %r178
+214 ld.global.f32 %r106, [%r179]
+215 reconverge
+216 mov.u32 %r180, 0
+217 setp.eq.s32 %p181, %r103, %r180
+218 @%p181 bra BB_1_36
+219 mul.lo.s32 %r182, %r105, %r25
+220 add.s32 %r123, %r182, %r23
+221 @!%p73 bra BB_1_28
+222 ld.param.u64 %r183, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+223 add.s32 %r184, %r123, 1
+224 mul.lo.s32 %r185, %r27, %r184
+225 add.s32 %r186, %r48, %r185
+226 cvt.s64.s32 %r187, %r186
+227 mul.wide.s32 %r188, %r186, 4
+228 add.u64 %r189, %r183, %r188
+229 ld.global.f32 %r190, [%r189]
+230 bra.uni BB_1_29
+231 add.u32 %r191, %r78, %r12
+232 cvt.u64.u32 %r192, %r191
+233 mul.wide.u32 %r193, %r191, 4
+234 add.u64 %r194, %r0, %r193
+235 ld.shared.f32 %r190, [%r194]
+236 reconverge
+237 @!%p76 bra BB_1_31
+238 ld.param.u64 %r195, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+239 sub.s32 %r196, %r123, 1
+240 mul.lo.s32 %r197, %r27, %r196
+241 add.s32 %r198, %r48, %r197
+242 cvt.s64.s32 %r199, %r198
+243 mul.wide.s32 %r200, %r198, 4
+244 add.u64 %r201, %r195, %r200
+245 ld.global.f32 %r202, [%r201]
+246 bra.uni BB_1_32
+247 sub.u32 %r203, %r12, %r78
+248 cvt.u64.u32 %r204, %r203
+249 mul.wide.u32 %r205, %r203, 4
+250 add.u64 %r206, %r0, %r205
+251 ld.shared.f32 %r202, [%r206]
+252 reconverge
+253 mul.lo.s32 %r207, %r123, %r27
+254 add.s32 %r208, %r48, %r207
+255 cvt.s64.s32 %r209, %r208
+256 mul.wide.s32 %r210, %r208, 4
+257 @!%p80 bra BB_1_34
+258 ld.param.u64 %r211, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_A0 + 8]
+259 add.u64 %r212, %r211, %r210
+260 ld.global.f32 %r213, [%r212 + 4]
+261 bra.uni BB_1_35
+262 ld.shared.f32 %r213, [%r15 + 4]
+263 reconverge
+264 ld.shared.f32 %r214, [%r15]
+265 ld.param.f32 %r215, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_c0]
+266 mul.f32 %r216, %r214, %r215
+267 ld.param.f32 %r217, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_c1 + 4]
+268 ld.shared.f32 %r218, [%r15 + -4]
+269 add.f32 %r219, %r106, %r60
+270 add.f32 %r220, %r190, %r219
+271 add.f32 %r221, %r202, %r220
+272 add.f32 %r222, %r213, %r221
+273 add.f32 %r223, %r218, %r222
+274 mul.f32 %r224, %r217, %r223
+275 sub.f32 %r225, %r224, %r216
+276 ld.param.u64 %r226, [__cudaparm__Z24block2D_hybrid_coarsen_xffPfS_iii_Anext + 16]
+277 add.u64 %r227, %r226, %r210
+278 st.global.f32 [%r227], %r225
+279 reconverge
+280 bar.sync 0
+281 ld.shared.f32 %r40, [%r9]
+282 st.shared.f32 [%r9], %r107
+283 ld.shared.f32 %r60, [%r15]
+284 st.shared.f32 [%r15], %r106
+285 bar.sync 0
+286 add.s32 %r228, %r105, 1
+287 mov.s32 %r105, %r228
+288 setp.ne.s32 %p229, %r69, %r228
+289 @%p229 bra BB_1_10
+290 reconverge
+291 exit

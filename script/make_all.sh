@@ -59,3 +59,9 @@ echo "####Start making model_enhance_expanded"
 make
 echo
 cd ../../script
+
+cd ../src/model_enhance_histo
+echo "####Start making enhance_modify_histo"
+make
+echo
+cd ../../script

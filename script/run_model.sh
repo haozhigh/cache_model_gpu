@@ -5,13 +5,13 @@ source common.sh
 model_version=$1
 if [ -z $model_version ]; then
     echo "Need an argument to specify model version"
-    echo "Available versions: base modify modify_expanded enhance enhance_expanded"
+    echo "Available versions: base modify modify_expanded enhance enhance_expanded enhance_histo"
     exit -1
 fi
 
-if [ "$model_version" != "base" -a "$model_version" != "modify" -a "$model_version" != "modify_expanded" -a "$model_version" != "enhance" -a "$model_version" != "enhance_expanded" ]; then
+if [ "$model_version" != "base" -a "$model_version" != "modify" -a "$model_version" != "modify_expanded" -a "$model_version" != "enhance" -a "$model_version" != "enhance_expanded" -a "$model_version" != "enhance_histo" ]; then
     echo "Model version $model_modify doesn't match"
-    echo "Available versions: base modify modify_expanded enhance enhance_expanded"
+    echo "Available versions: base modify modify_expanded enhance enhance_expanded enhance_histo"
     exit -1
 fi
 echo "#### Starting run cachemodel $model_version"

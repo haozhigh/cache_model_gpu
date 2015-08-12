@@ -1,0 +1,53 @@
+0 mov.u32 %r0, %ctaid.x
+1 mov.u32 %r1, %ntid.x
+2 mul.lo.u32 %r2, %r0, %r1
+3 mov.u32 %r3, %ctaid.y
+4 mov.u32 %r4, %ntid.y
+5 mul.lo.u32 %r5, %r3, %r4
+6 mov.u32 %r6, %tid.x
+7 add.u32 %r7, %r6, %r2
+8 mov.u32 %r8, %tid.y
+9 add.u32 %r9, %r8, %r5
+10 mov.s32 %r10, 255
+11 set.le.u32.s32 %r11, %r9, %r10
+12 neg.s32 %r12, %r11
+13 mov.s32 %r13, 255
+14 set.le.u32.s32 %r14, %r7, %r13
+15 neg.s32 %r15, %r14
+16 and.b32 %r16, %r12, %r15
+17 mov.u32 %r17, 0
+18 setp.eq.s32 %p18, %r16, %r17
+19 @%p18 bra BB_1_5
+20 mul.lo.s32 %r19, %r9, 256
+21 ld.param.u64 %r20, [__cudaparm__Z11gemm_kernelPfS_S__c + 16]
+22 add.s32 %r21, %r19, %r7
+23 cvt.s64.s32 %r22, %r21
+24 mul.wide.s32 %r23, %r21, 4
+25 add.u64 %r24, %r20, %r23
+26 ld.global.f32 %r25, [%r24]
+27 mov.f32 %r26, 0f4504b000
+28 mul.f32 %r27, %r25, %r26
+29 st.global.f32 [%r24], %r27
+30 mov.s32 %r28, %r7
+31 add.s32 %r29, %r7, 65536
+32 ld.param.u64 %r30, [__cudaparm__Z11gemm_kernelPfS_S__b + 8]
+33 cvt.s64.s32 %r31, %r7
+34 mul.wide.s32 %r32, %r7, 4
+35 add.u64 %r33, %r30, %r32
+36 ld.param.u64 %r34, [__cudaparm__Z11gemm_kernelPfS_S__a]
+37 cvt.s64.s32 %r35, %r19
+38 mul.wide.s32 %r36, %r19, 4
+39 add.u64 %r37, %r34, %r36
+40 ld.global.f32 %r38, [%r33]
+41 ld.global.f32 %r39, [%r37]
+42 mov.f32 %r40, 0f46fd3800
+43 mul.f32 %r41, %r39, %r40
+44 fma.rn.f32 %r27, %r38, %r41, %r27
+45 st.global.f32 [%r24], %r27
+46 add.u64 %r37, %r37, 4
+47 add.s32 %r28, %r28, 256
+48 add.u64 %r33, %r33, 1024
+49 setp.ne.s32 %p42, %r28, %r29
+50 @%p42 bra BB_1_4
+51 reconverge
+52 exit

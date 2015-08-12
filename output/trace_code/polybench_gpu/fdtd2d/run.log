@@ -1,0 +1,9 @@
+Starting with _Z17fdtd_step1_kernelPfS_S_S_i
+[Tracer] completed up to 8192 threads
+Starting with _Z17fdtd_step2_kernelPfS_S_i
+[Tracer] completed up to 8192 threads
+Starting with _Z17fdtd_step3_kernelPfS_S_i
+[Tracer] completed up to 8192 threads
+Starting with _Z17fdtd_step1_kernelPfS_S_S_i
+Repeated kernel: _Z17fdtd_step1_kernelPfS_S_S_i
+Exiting program...

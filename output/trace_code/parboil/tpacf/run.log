@@ -1,0 +1,13 @@
+Min distance: 1.000000 arcmin
+Max distance: 10000.000000 arcmin
+Bins per dec: 5
+Total bins  : 20
+Starting with _Z9gen_histsPmPfS0_S0_ii
+[Tracer] completed up to 8192 threads
+IO        : 0.028750
+Kernel    : 159.439968
+Copy      : 0.007259
+Driver    : 159.439969
+Compute   : 0.000607
+CPU/Kernel Overlap: 159.439968
+Timer Wall Time: 159.476639
