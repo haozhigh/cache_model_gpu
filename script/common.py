@@ -7,6 +7,83 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
+class DDict:
+    def __init__(self):
+        self.data = dict()
+
+    def add(self, r_id, c_id, value):
+        if self.data.get(r_id) == None:
+            self.data[r_id] = dict()
+
+        self.data[r_id][c_id] = value
+
+    def get_row_ids(self):
+        r_ids = list(self.data.keys())
+        r_ids.sort()
+        return r_ids
+
+    def get_col_ids(self, r_id = None):
+        if r_id == None:
+            r_id = self.get_row_ids()[0]
+        c_ids = list(self.data[r_id].keys())
+        c_ids.sort()
+        return c_ids
+
+    def get_row(self, r_id):
+        if self.data.get(r_id) == None:
+            return list()
+
+        row_list = list()
+        for c_id in self.get_col_ids(r_id):
+            row_list.append(self.data[r_id][c_id])
+        return row_list
+
+    def get_weighted_row(self, r_id):
+        if self.data.get(r_id) == None:
+            return list()
+
+        row_list = list()
+        for c_id in self.get_col_ids(r_id):
+            row_list.append(c_id * self.data[r_id][c_id])
+        return row_list
+
+    def get_weighted_row_sum(self, r_id):
+        return sum(self.get_weighted_row(r_id)) / self.get_row_sum(r_id)
+
+    def get_row_sum(self, r_id):
+        return sum(self.get_row(r_id))
+
+    def get_row_sum_list(self):
+        row_sum_list = list()
+        r_ids = self.get_row_ids()
+        for r_id in r_ids:
+            row_sum_list.append(self.get_row_sum(r_id))
+        return row_sum_list
+
+    def get_weighted_row_sum_list(self):
+        row_sum_list = list()
+        r_ids = self.get_row_ids()
+        for r_id in r_ids:
+            row_sum_list.append(self.get_weighted_row_sum(r_id))
+        return row_sum_list
+
+    def get_col(self, c_id):
+        col_list = list()
+        for r_id in self.get_row_ids():
+            if self.data[r_id].get(c_id) != None:
+                col_list.append(self.data[r_id][c_id])
+        return col_list
+
+    def get_col_sum(self, c_id):
+        return sum(self.get_col(c_id))
+
+    def get_col_sum_list(self):
+        col_sum_list = list()
+        c_ids = self.get_col_ids()
+        for c_id in c_ids:
+            col_sum_list.append(self.get_col_sum(c_id))
+        return col_sum_list
+
 class ProfilerStat:
     def __init__(self):
         self.kernel = None
@@ -33,6 +110,28 @@ class SimStat:
         self.l1_accesses = 0
         self.l1_misses = 0
         self.l1_miss_rate = 0
+
+def parse_histo_output(out_file):
+    f = open(out_file, 'r')
+    s = f.read()
+    f.close()
+
+    ddict = DDict()
+    pattern =  re.compile(r'histogram:(\n\d+ \d+ \d+)+\n\n')
+    match = re.search(pattern, s)
+    if match != None:
+        match_str = match.group(0)
+        lines = match_str.split('\n')
+
+        pattern2 = re.compile(r'\d+ \d+ \d+')
+        for line in lines:
+            match2 = re.search(pattern2, line)
+            if match2 != None:
+                match_line = match2.group(0)
+                match_line = match_line.split(' ')
+                ddict.add(int(match_line[0]), int(match_line[1]), int(match_line[2]))
+    return ddict
+
 
 ##  Parse the output of nvprof profiler, grab statistics needed
 ##  input:
@@ -71,6 +170,8 @@ def parse_ocelot_log(out_file):
         log_dir = dir_name.replace('model_modify', 'trace_base')
     elif dir_name.find('model_enhance') >= 0:
         log_dir = dir_name.replace('model_enhance', 'trace_enhance')
+    if log_dir.find('_histo') >= 0:
+        log_dir = log_dir.replace('_histo', '')
     run_log = os.path.join(log_dir, 'run.log')
 
     f = open(run_log, 'r')
@@ -262,6 +363,14 @@ def demangle_cpp_fun_name(name):
     data = pipe.read()
     pipe.close()
     return data.split('(')[0]
+
+def ensure_dir_exists(dir_name):
+    if not os.path.exists(dir_name):
+        cmd = "mkdir -p " + dir_name
+        pipe = os.popen(cmd)
+        data = pipe.read()
+        pipe.close()
+        return
 
 ##  Sort records by the first element of each reocrd
 ##  input:

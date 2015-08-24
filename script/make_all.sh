@@ -8,6 +8,7 @@ if [ "$1" == "clean" ]; then
     rm -f ../build/*_trace_base_expanded
     rm -f ../build/*_trace_enhance
     rm -f ../build/*_trace_enhance_expanded
+    rm -f ../build/*_trace_code
     rm -f ../build/cachemodel_*
     exit 0
 fi

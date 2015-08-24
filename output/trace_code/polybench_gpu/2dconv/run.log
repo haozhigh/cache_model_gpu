@@ -1,5 +1,5 @@
 Starting with _Z20Convolution2D_kernelPfS_
 [Tracer] completed up to 8192 threads
-GPU Runtime: 2.011756s
-CPU Runtime: 0.011404s
+GPU Runtime: 2.013988s
+CPU Runtime: 0.008895s
 Non-Matching CPU-GPU Outputs Beyond Error Threshold of 0.05 Percent: 0

@@ -4,10 +4,10 @@ Starting with _Z17larger_sad_calc_8Ptii
 [Tracer] completed up to 8192 threads
 Starting with _Z18larger_sad_calc_16Ptii
 [Tracer] completed up to 8192 threads
-IO        : 0.139296
-Kernel    : 10.735399
-Copy      : 0.010459
-Driver    : 10.735400
-Compute   : 0.000159
-CPU/Kernel Overlap: 10.735399
-Timer Wall Time: 10.885356
+IO        : 0.236931
+Kernel    : 10.348894
+Copy      : 0.014307
+Driver    : 10.348895
+Compute   : 0.000535
+CPU/Kernel Overlap: 10.348894
+Timer Wall Time: 10.600690

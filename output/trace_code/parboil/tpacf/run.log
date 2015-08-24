@@ -4,10 +4,10 @@ Bins per dec: 5
 Total bins  : 20
 Starting with _Z9gen_histsPmPfS0_S0_ii
 [Tracer] completed up to 8192 threads
-IO        : 0.028750
-Kernel    : 159.439968
-Copy      : 0.007259
-Driver    : 159.439969
-Compute   : 0.000607
-CPU/Kernel Overlap: 159.439968
-Timer Wall Time: 159.476639
+IO        : 0.136836
+Kernel    : 153.864359
+Copy      : 0.011168
+Driver    : 153.864356
+Compute   : 0.000572
+CPU/Kernel Overlap: 153.864359
+Timer Wall Time: 154.013000

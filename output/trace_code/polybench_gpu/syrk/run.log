@@ -1,5 +1,5 @@
 Starting with _Z11syrk_kernelffPfS_
 [Tracer] completed up to 8192 threads
-GPU Runtime: 0.832080s
-CPU Runtime: 0.004481s
+GPU Runtime: 0.838096s
+CPU Runtime: 0.004634s
 Non-Matching CPU-GPU Outputs Beyond Error Threshold of 0.05 Percent: 0

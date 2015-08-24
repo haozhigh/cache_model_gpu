@@ -2,6 +2,6 @@ Starting with _Z11mvt_kernel1PfS_S_
 [Tracer] completed up to 8192 threads
 Starting with _Z11mvt_kernel2PfS_S_
 [Tracer] completed up to 8192 threads
-GPU Runtime: 0.187112s
-CPU Runtime: 0.001464s
+GPU Runtime: 0.182183s
+CPU Runtime: 0.001470s
 Non-Matching CPU-GPU Outputs Beyond Error Threshold of 0.05 Percent: 0

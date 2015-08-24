@@ -5,8 +5,8 @@ cache_ways: 4
 cache_sets: 32
 
 histogram:
-1 255
-0 7905
+1 256
+0 7904
 99999999 8240
 
 CASE: 0 miss_compulsory: 8240
